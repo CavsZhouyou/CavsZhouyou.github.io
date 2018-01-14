@@ -3,6 +3,21 @@
 
 
     
+  <url>
+    <loc>http://yoursite.com/2018/01/14/hello-world/</loc>
+    <lastmod>2018-01-14T14:52:21.826Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2018-01-14T06:08:42.774Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
     
     
     
@@ -16,21 +31,6 @@
         
         <tag>15</tag>
          
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/01/14/hello-world/</loc>
-    <lastmod>2018-01-14T06:08:42.774Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2018-01-14T06:08:42.774Z</pubTime>
-        
          
            
         </display>
