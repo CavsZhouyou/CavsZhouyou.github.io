@@ -5,14 +5,19 @@
     
   <url>
     <loc>http://yoursite.com/2018/01/14/hello-world/</loc>
-    <lastmod>2018-01-14T14:52:21.826Z</lastmod>
+    <lastmod>2018-01-15T15:21:42.229Z</lastmod>
     <data>
         <display>
         <title>Hello World</title>
         <pubTime>2018-01-14T06:08:42.774Z</pubTime>
         
+        <tag>hexo</tag>
+         
          
            
+             
+              <breadCrumb title="前端" url="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+          
         </display>
     </data>
     </url>
@@ -21,20 +26,5 @@
     
     
     
-  <url>
-    <loc>http://yoursite.com/2018/01/14/new-post/</loc>
-    <lastmod>2018-01-14T06:19:24.494Z</lastmod>
-    <data>
-        <display>
-        <title>杨宇晨</title>
-        <pubTime>2018-01-14T06:11:30.000Z</pubTime>
-        
-        <tag>15</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
+    
 </urlset>
