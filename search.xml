@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F01%2F14%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment 12345.text &#123; width: 100px; height: 100px; margin-left: 50px;&#125; Content (md partial supported)]]></content>
+    <title><![CDATA[Markdown入门]]></title>
+    <url>%2F2018%2F01%2F17%2FMarkdownStudy%2F</url>
+    <content type="text"><![CDATA[]]></content>
       <categories>
-        <category>前端</category>
+        <category>Markdown语法</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>Markdown</tag>
       </tags>
   </entry>
 </search>
