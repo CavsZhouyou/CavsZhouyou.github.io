@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Markdown入门]]></title>
+    <title><![CDATA[用Markdown来写文档]]></title>
     <url>%2F2018%2F01%2F17%2FMarkdownStudy%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[写在前面第一次接触 Markdown 是在 github 上，当时看每一个仓库里的 ReadMe 文档都是 md 格式的，文档内容的排版基本一致。这是什么东西，好奇的我赶紧百度了一下，看完官方文档，感觉自己推开了新世界的大门，有没有很方便！看完文档后，感觉文档里有一些东西介绍的有一些晦涩，不好理解。下面我想分享一些我对 Markdown 的一些认识。 一、认识 Markdown什么是 Markdown Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。 Mrakdown 其实是一种文档编辑的标记语言，它的目标是实现「易读易写」，成为一种适用于网络的书写语言。那怎样才能算易读易写呢？我们在书写文档时，有时候最头疼的就是文章的排版问题，这个时候使用 Mrakdown 就很方便了。试想一下在写文档时，用键盘一气呵成地写好内容，而且这个时候文章已经排版好了，大声告诉我，有没有很舒服。Mrakdown 能很大程度上提高你的码字效率和体验，如果你想快速编写格式丰富并且美观的文章，Markdown 是你的不二选择，怎么有一种打广告的感觉…… 兼容 HTML相信大家对超文本标记语言 HTML 都不陌生，那么 Mrakdown 和 HTML 有什么关系呢？简单的说就是，HTML 是一种发布的格式，Markdown 是一种书写的格式。什么意思呢，就是你在浏览器里边看到的所有东西都是由 HTML 标记组成的。那么 Markdown 想要显示对应的内容该怎么办呢，答案就是将其解析为 HTML 的形式来显示内容。 举一个例子，在 Markdown 语法中，有序列表使用数字接着一个英文句点来表示: 1231. Bird2. McHale3. Parish 上面的列表所产生的 HTML 标记为： 12345&lt;ol&gt;&lt;li&gt;Bird&lt;/li&gt;&lt;li&gt;McHale&lt;/li&gt;&lt;li&gt;Parish&lt;/li&gt;&lt;/ol&gt; 上面的例子就是 Markdown 与 HTML 的转换。这个时候可能有的同学就会提问了，那我在 Markdown 里边插入 HTML 标签该怎么显示了？这里就是我想讲的 Markdown 的一个特性就是兼容 HTML。Markdown 的格式语法只涵盖纯文本可以涵盖的范围。不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 HTML 或是 Markdown；只要直接加标签就可以了。要制约的只有一些 HTML 区块元素――比如 &lt;div&gt;、&lt;table&gt;、&lt;pre&gt;、&lt;p&gt; 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。Markdown 的生成器有足够智能，不会在 HTML 区块标签外加上不必要的 &lt;p&gt; 标签。也就是说你如果在 Markdown 文档里添加了一个&lt;table&gt;标签，最后解析完成后，它仍然是一个&lt;table&gt;标签，不会解析错误，当然你如果想以代码段的形式呈现就是另外的情况了。 ###特殊字符自动转换在 HTML 文件中，有两个字符需要特殊处理： &lt; 和 &amp; 。 &lt; 符号用于起始标签，&amp; 符号则用于标记 HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 &amp;lt; 和 &amp;amp;但你如果使用Markdown，你就无需担心这些问题，它让你可以自然地书写字符，需要转换全由它来处理。]]></content>
       <categories>
-        <category>Markdown语法</category>
+        <category>Markdown</category>
       </categories>
       <tags>
         <tag>Markdown</tag>

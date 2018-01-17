@@ -90,14 +90,14 @@
 
 <meta name="keywords" content="Markdown">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown入门">
+<meta property="og:title" content="用Markdown来写文档">
 <meta property="og:url" content="http://yoursite.com/2018/01/17/MarkdownStudy/index.html">
 <meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu1.jpg">
-<meta property="og:updated_time" content="2018-01-17T11:30:08.850Z">
+<meta property="og:updated_time" content="2018-01-17T13:53:47.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Markdown入门">
+<meta name="twitter:title" content="用Markdown来写文档">
 <meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu1.jpg">
 
 
@@ -134,7 +134,7 @@
 
 
 
-  <title>Markdown入门 | CavsZhouyou's Blog</title>
+  <title>用Markdown来写文档 | CavsZhouyou's Blog</title>
   
 
 
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Markdown入门</h1>
+          <h1 class="post-title" itemprop="name headline">用Markdown来写文档</h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Markdown语法/" itemprop="url" rel="index">
-                    <span itemprop="name">Markdown语法</span>
+                  <a href="/categories/Markdown/" itemprop="url" rel="index">
+                    <span itemprop="name">Markdown</span>
                   </a>
                 </span>
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0字
+                  967字
                 </span>
               
 
@@ -434,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1分钟
+                  3分钟
                 </span>
               
             </div>
@@ -457,6 +457,18 @@
       
         <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu1.jpg" alt="Markdown语法学习配图"></p>
 <a id="more"></a>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>第一次接触 Markdown 是在 github 上，当时看每一个仓库里的 ReadMe 文档都是 md 格式的，文档内容的排版基本一致。这是什么东西，好奇的我赶紧百度了一下，看完官方文档，感觉自己推开了新世界的大门，有没有很方便！看完文档后，感觉文档里有一些东西介绍的有一些晦涩，不好理解。下面我想分享一些我对 Markdown 的一些认识。</p>
+<h2 id="一、认识-Markdown"><a href="#一、认识-Markdown" class="headerlink" title="一、认识 Markdown"></a>一、认识 Markdown</h2><h3 id="什么是-Markdown"><a href="#什么是-Markdown" class="headerlink" title="什么是 Markdown"></a>什么是 Markdown</h3><blockquote>
+<p>Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+</blockquote>
+<p>Mrakdown 其实是一种文档编辑的标记语言，它的目标是实现「易读易写」，成为一种适用于网络的书写语言。那怎样才能算易读易写呢？我们在书写文档时，有时候最头疼的就是文章的排版问题，这个时候使用 Mrakdown 就很方便了。试想一下在写文档时，用键盘一气呵成地写好内容，而且这个时候文章已经排版好了，大声告诉我，有没有很舒服。Mrakdown 能很大程度上提高你的码字效率和体验，如果你想快速编写格式丰富并且美观的文章，Markdown 是你的不二选择，怎么有一种打广告的感觉……</p>
+<h3 id="兼容-HTML"><a href="#兼容-HTML" class="headerlink" title="兼容 HTML"></a>兼容 HTML</h3><p>相信大家对超文本标记语言 HTML 都不陌生，那么 Mrakdown 和 HTML 有什么关系呢？简单的说就是，HTML 是一种发布的格式，Markdown 是一种书写的格式。什么意思呢，就是你在浏览器里边看到的所有东西都是由 HTML 标记组成的。那么 Markdown 想要显示对应的内容该怎么办呢，答案就是将其解析为 HTML 的形式来显示内容。</p>
+<p>举一个例子，在 Markdown 语法中，有序列表使用数字接着一个英文句点来表示:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.  Bird</span><br><span class="line">2.  McHale</span><br><span class="line">3.  Parish</span><br></pre></td></tr></table></figure>
+<p>上面的列表所产生的 HTML 标记为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol&gt;</span><br><span class="line">&lt;li&gt;Bird&lt;/li&gt;</span><br><span class="line">&lt;li&gt;McHale&lt;/li&gt;</span><br><span class="line">&lt;li&gt;Parish&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<p>上面的例子就是 Markdown 与 HTML 的转换。这个时候可能有的同学就会提问了，那我在 Markdown 里边插入 HTML 标签该怎么显示了？这里就是我想讲的 Markdown 的一个特性就是<strong>兼容 HTML</strong>。Markdown 的格式语法只涵盖纯文本可以涵盖的范围。不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 HTML 或是 Markdown；只要直接加标签就可以了。要制约的只有一些 HTML 区块元素――比如 <code>&lt;div&gt;</code>、<code>&lt;table&gt;</code>、<code>&lt;pre&gt;</code>、<code>&lt;p&gt;</code> 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。Markdown 的生成器有足够智能，不会在 HTML 区块标签外加上不必要的 <code>&lt;p&gt;</code> 标签。也就是说你如果在 Markdown 文档里添加了一个<code>&lt;table&gt;</code>标签，最后解析完成后，它仍然是一个<code>&lt;table&gt;</code>标签，不会解析错误，当然你如果想以代码段的形式呈现就是另外的情况了。</p>
+<p>###特殊字符自动转换<br>在 HTML 文件中，有两个字符需要特殊处理： &lt; 和 &amp; 。 &lt; 符号用于起始标签，&amp; 符号则用于标记 HTML 实体，如果你只是想要显示这些字符的原型，你必须要使用实体的形式，像是 <code>&amp;lt;</code> 和 <code>&amp;amp;</code>但你如果使用Markdown，你就无需担心这些问题，它让你可以自然地书写字符，需要转换全由它来处理。</p>
 
       
     </div>
@@ -570,8 +582,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -671,6 +692,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、认识-Markdown"><span class="nav-number">2.</span> <span class="nav-text">一、认识 Markdown</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-Markdown"><span class="nav-number">2.1.</span> <span class="nav-text">什么是 Markdown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容-HTML"><span class="nav-number">2.2.</span> <span class="nav-text">兼容 HTML</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -698,7 +735,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">0</span>
+    <span title="Site words total count">967</span>
   
 </div>
 
@@ -879,7 +916,7 @@
         var disqus_config = function () {
           this.page.url = 'http://yoursite.com/2018/01/17/MarkdownStudy/';
           this.page.identifier = '2018/01/17/MarkdownStudy/';
-          this.page.title = 'Markdown入门';
+          this.page.title = '用Markdown来写文档';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://CavsZhouyou.disqus.com/embed.js';
