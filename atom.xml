@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://cavszhouyou.top/"/>
   <updated>2018-01-19T13:20:28.109Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://cavszhouyou.top/</id>
   
   <author>
     <name>CavsZhouyou</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Markdown—文档解读</title>
-    <link href="http://yoursite.com/2018/01/17/MarkdownStudy/"/>
-    <id>http://yoursite.com/2018/01/17/MarkdownStudy/</id>
+    <link href="http://cavszhouyou.top/title.html"/>
+    <id>http://cavszhouyou.top/title.html</id>
     <published>2018-01-17T06:04:45.000Z</published>
     <updated>2018-01-19T13:20:28.109Z</updated>
     
@@ -31,10 +31,10 @@
     
     </summary>
     
-      <category term="Markdown" scheme="http://yoursite.com/categories/Markdown/"/>
+      <category term="Markdown" scheme="http://cavszhouyou.top/categories/Markdown/"/>
     
     
-      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+      <category term="Markdown" scheme="http://cavszhouyou.top/tags/Markdown/"/>
     
   </entry>
   
