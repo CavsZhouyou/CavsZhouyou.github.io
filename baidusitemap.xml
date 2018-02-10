@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://cavszhouyou.top/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BASpring-SpringMVC-Mybatis.html</loc>
+    <lastmod>2018-02-10T13:47:55.473Z</lastmod>
+    <data>
+        <display>
+        <title>从零搭建Spring+SpringMVC+Mybatis</title>
+        <pubTime>2018-02-10T03:55:26.000Z</pubTime>
+        
+        <tag>后端</tag>
+         
+        <tag>Spring</tag>
+         
+        <tag>SpringMVC</tag>
+         
+        <tag>Mybatis</tag>
+         
+         
+           
+             
+              <breadCrumb title="后端" url="http://cavszhouyou.top/categories/%E5%90%8E%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://cavszhouyou.top/%E9%80%9A%E8%BF%87js%E5%AE%9E%E7%8E%B0%E4%B8%83%E7%89%9B%E4%BA%91%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0.html</loc>
     <lastmod>2018-02-09T13:08:01.185Z</lastmod>
     <data>
@@ -11,9 +37,9 @@
         <title>通过js实现七牛云图片上传</title>
         <pubTime>2018-02-06T11:54:47.000Z</pubTime>
         
-        <tag>七牛云</tag>
-         
         <tag>前端</tag>
+         
+        <tag>七牛云</tag>
          
          
            
@@ -33,9 +59,9 @@
         <title>通过java生成七牛云uptoken</title>
         <pubTime>2018-02-07T04:04:56.000Z</pubTime>
         
-        <tag>后端</tag>
-         
         <tag>七牛云</tag>
+         
+        <tag>后端</tag>
          
          
            
