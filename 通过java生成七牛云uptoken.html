@@ -88,16 +88,19 @@
 
 
 
+<meta name="description" content="写在前面最近在写一个图片分享网站类型的小 demo，使用七牛云图片上传需要服务端生成上传凭证 uptoken。本来对后端了解的不是很多，看了官网的说明，写了一个最基本的生成方法，所以总结一下生成 uptoken 的具体步骤。我这里介绍的是使用七牛云 Java SDK 的生成方法。">
 <meta name="keywords" content="后端,七牛云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过java生成七牛云uptoken">
 <meta property="og:url" content="http://cavszhouyou.top/通过java生成七牛云uptoken.html">
 <meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
+<meta property="og:description" content="写在前面最近在写一个图片分享网站类型的小 demo，使用七牛云图片上传需要服务端生成上传凭证 uptoken。本来对后端了解的不是很多，看了官网的说明，写了一个最基本的生成方法，所以总结一下生成 uptoken 的具体步骤。我这里介绍的是使用七牛云 Java SDK 的生成方法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu3-1.jpg">
-<meta property="og:updated_time" content="2018-02-09T13:02:04.669Z">
+<meta property="og:updated_time" content="2018-02-12T08:49:30.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过java生成七牛云uptoken">
+<meta name="twitter:description" content="写在前面最近在写一个图片分享网站类型的小 demo，使用七牛云图片上传需要服务端生成上传凭证 uptoken。本来对后端了解的不是很多，看了官网的说明，写了一个最基本的生成方法，所以总结一下生成 uptoken 的具体步骤。我这里介绍的是使用七牛云 Java SDK 的生成方法。">
 <meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu3-1.jpg">
 
 
@@ -445,8 +448,8 @@
 
       
         <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu3-1.jpg" alt="通过 java 生成七牛云 UpToken 文章配图"></p>
-<a id="more"></a>
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>最近在写一个图片分享网站类型的小 demo，使用七牛云图片上传需要服务端生成上传凭证 uptoken。本来对后端了解的不是很多，看了官网的说明，写了一个最基本的生成方法，所以总结一下生成 uptoken 的具体步骤。我这里介绍的是使用七牛云 Java SDK 的生成方法。</p>
+<a id="more"></a>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
 <p>此 SDK 适用于 Java 7 及以上版本。使用此 SDK 构建您的网络应用程序，能让您以非常便捷地方式将数据安全地存储 到七牛云上。无论您的网络应用是一个网站程序，还是包括从云端（服务端程序）到终端（手持设备应用）的架构服务或应 用，通过七牛云及其 SDK，都能让您应用程序的终端用户高速上传和下载，同时也让您的服务端更加轻盈。<br>Java SDK 属于七牛服务端 SDK 之一，主要有如下功能：</p>
 <ul>

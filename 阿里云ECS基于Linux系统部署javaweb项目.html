@@ -88,11 +88,13 @@
 
 
 
+<meta name="description" content="写在前面最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。">
 <meta name="keywords" content="阿里云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云ECS基于Linux系统部署javaweb项目">
 <meta property="og:url" content="http://cavszhouyou.top/阿里云ECS基于Linux系统部署javaweb项目.html">
 <meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
+<meta property="og:description" content="写在前面最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-1.jpg">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-2.png">
@@ -112,9 +114,10 @@
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-18.png">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-19.png">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-20.png">
-<meta property="og:updated_time" content="2018-02-11T13:32:29.705Z">
+<meta property="og:updated_time" content="2018-02-12T08:47:14.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云ECS基于Linux系统部署javaweb项目">
+<meta name="twitter:description" content="写在前面最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。">
 <meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-1.jpg">
 
 
@@ -424,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,524字
+                  1,533字
                 </span>
               
 
@@ -440,7 +443,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5分钟
+                  6分钟
                 </span>
               
             </div>
@@ -462,9 +465,9 @@
 
       
         <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-1.jpg" alt="阿里云ECS基于Linux系统部署javaweb项目文章配图"></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。</p>
 <a id="more"></a>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>最近发现阿里云推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试我都对不起自己。本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步使用 ECS 部署你的 javaweb 项目。</p>
-<h2 id="云服务器-ECS-购买"><a href="#云服务器-ECS-购买" class="headerlink" title="云服务器 ECS 购买"></a>云服务器 ECS 购买</h2><p>因为我们需要部署一个 javaweb 项目，所以我们需要在服务器配置相应的 JAVA 环境。当然我们购买最基本的 ECS 实例然后再安装对应的 mysql，tomcat 这些也是可以的。当然我们有一个一步到位的方法，就是选择已经配置好的镜像。大家可以通过在阿里云的云市场里边搜索找到 JAVA 环境（CentOS7.4 Nginx Tomcat8 JDK）这一个镜像，然后点击购买(这一个镜像是免费的)。下面是地址:</p>
+<h2 id="云服务器-ECS-购买"><a href="#云服务器-ECS-购买" class="headerlink" title="云服务器 ECS 购买"></a>云服务器 ECS 购买</h2><p>因为我们需要部署一个 javaweb 项目，所以我们需要在服务器配置相应的 JAVA 环境。当然我们购买最基本的 ECS 实例然后再安装对应的 mysql，tomcat 这些也是可以的。这里我们有一个一步到位的方法，就是选择已经配置好的镜像。大家可以通过在阿里云的云市场里边搜索找到 JAVA 环境（CentOS7.4 Nginx Tomcat8 JDK）这一个镜像，然后点击购买(这一个镜像是免费的)。下面是地址:</p>
 <ul>
 <li><a href="https://market.aliyun.com/products/53400005/cmjj016483.html?spm=a2c4g.11186623.2.8.6yiYw6" target="_blank" rel="noopener">JAVA 环境（CentOS7.4 Nginx Tomcat8 JDK）镜像</a></li>
 </ul>
@@ -529,7 +532,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service tomcat restart</span><br></pre></td></tr></table></figure>
 <h2 id="访问主页"><a href="#访问主页" class="headerlink" title="访问主页"></a>访问主页</h2><p>下面我们访问一下我们网站的主页试试，这里要注意网站的根目录是 default 目录，所以我们需要注意一下我们访问的页面的路径。这是我的图片分享网站的首页，大家可以参考一下:</p>
 <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-20.png" alt="配图5-20"></p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>好了，终于将我们的 javaweb 部署到服务器上了。虽然弄了很久…..但还是很高兴，感觉通过部署服务器上学到了很多东西，对网站的创建和运行有了一定的了解。希望我的总结也能够给你提供一点帮助，如果文章中出现错误或存在不严谨的地方，也希望大家给我留言指出。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>好了，终于将我们的 javaweb 部署到服务器上了。虽然弄了很久…..但还是很高兴，感觉通过部署服务器学到了很多东西，对网站的创建和运行有了一定的了解。希望我的总结也能够给你提供一点帮助，如果文章中出现错误或存在不严谨的地方，也希望大家给我留言指出。</p>
 
       
     </div>
