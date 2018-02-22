@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="七牛云,前端," />
+  <meta name="keywords" content="感悟,自律," />
 
 
 
@@ -88,20 +88,25 @@
 
 
 
-<meta name="description" content="写在前面最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。">
-<meta name="keywords" content="七牛云,前端">
+<meta name="description" content="写在前面今天早上起床看到了这篇文章，感触很多。一直想做一个自律的人，拥有一个自律的、向上的生活。但往往我会在下定决心的第二天、第三天就选择放弃。不是不知道自己想要什么，只是自己更多的选择了随波逐流的安逸。每天都浑浑噩噩的混过一天，让人很难接受。我希望自己的生活有所改变，谨以此文勉励自己，不要在最该奋斗的年纪蹉跎了芳华。">
+<meta name="keywords" content="感悟,自律">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通过js实现七牛云图片上传">
-<meta property="og:url" content="http://cavszhouyou.top/通过js实现七牛云图片上传.html">
+<meta property="og:title" content="那些自律到极致的人，都拥有了开挂的人生">
+<meta property="og:url" content="http://cavszhouyou.top/那些自律到极致的人，都拥有了开挂的人生.html">
 <meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
-<meta property="og:description" content="写在前面最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。">
+<meta property="og:description" content="写在前面今天早上起床看到了这篇文章，感触很多。一直想做一个自律的人，拥有一个自律的、向上的生活。但往往我会在下定决心的第二天、第三天就选择放弃。不是不知道自己想要什么，只是自己更多的选择了随波逐流的安逸。每天都浑浑噩噩的混过一天，让人很难接受。我希望自己的生活有所改变，谨以此文勉励自己，不要在最该奋斗的年纪蹉跎了芳华。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu2-1.jpg">
-<meta property="og:updated_time" content="2018-02-12T08:49:39.464Z">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu6-1.jpg">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu6-2.webp">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu6-3.webp">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu6-4.webp">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu6-5.webp">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu6-6.webp">
+<meta property="og:updated_time" content="2018-02-22T05:44:48.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="通过js实现七牛云图片上传">
-<meta name="twitter:description" content="写在前面最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。">
-<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu2-1.jpg">
+<meta name="twitter:title" content="那些自律到极致的人，都拥有了开挂的人生">
+<meta name="twitter:description" content="写在前面今天早上起床看到了这篇文章，感触很多。一直想做一个自律的人，拥有一个自律的、向上的生活。但往往我会在下定决心的第二天、第三天就选择放弃。不是不知道自己想要什么，只是自己更多的选择了随波逐流的安逸。每天都浑浑噩噩的混过一天，让人很难接受。我希望自己的生活有所改变，谨以此文勉励自己，不要在最该奋斗的年纪蹉跎了芳华。">
+<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu6-1.jpg">
 
 
 
@@ -131,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://cavszhouyou.top/通过js实现七牛云图片上传.html"/>
+  <link rel="canonical" href="http://cavszhouyou.top/那些自律到极致的人，都拥有了开挂的人生.html"/>
 
 
 
 
 
-  <title>通过js实现七牛云图片上传 | CavsZhouyou's Blog</title>
+  <title>那些自律到极致的人，都拥有了开挂的人生 | CavsZhouyou's Blog</title>
   
 
 
@@ -320,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/通过js实现七牛云图片上传.html">
+    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/那些自律到极致的人，都拥有了开挂的人生.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CavsZhouyou">
@@ -337,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">通过js实现七牛云图片上传</h1>
+          <h1 class="post-title" itemprop="name headline">那些自律到极致的人，都拥有了开挂的人生</h1>
         
 
         <div class="post-meta">
@@ -349,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T19:54:47+08:00">
-                2018-02-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-22T12:19:48+08:00">
+                2018-02-22
               </time>
             
 
@@ -372,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/七牛云/" itemprop="url" rel="index">
-                    <span itemprop="name">七牛云</span>
+                  <a href="/categories/心得感悟/" itemprop="url" rel="index">
+                    <span itemprop="name">心得感悟</span>
                   </a>
                 </span>
 
@@ -410,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,774字
+                  2,772字
                 </span>
               
 
@@ -426,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7分钟
+                  9分钟
                 </span>
               
             </div>
@@ -447,35 +452,110 @@
       
 
       
-        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu2-1.jpg" alt="七牛云图片上传配图"></p>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。</p>
+        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu6-1.jpg" alt="配图6-1"></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>今天早上起床看到了这篇文章，感触很多。一直想做一个自律的人，拥有一个自律的、向上的生活。但往往我会在下定决心的第二天、第三天就选择放弃。不是不知道自己想要什么，只是自己更多的选择了随波逐流的安逸。每天都浑浑噩噩的混过一天，让人很难接受。我希望自己的生活有所改变，谨以此文勉励自己，不要在最该奋斗的年纪蹉跎了芳华。</p>
 <a id="more"></a>
-<h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><ul>
-<li><a href="https://github.com/qiniu/js-sdk/#usage" title="七牛云Qiniu-JavaScript-SDK官方文档" target="_blank" rel="noopener">七牛云 Qiniu-JavaScript-SDK 官方文档</a></li>
-</ul>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p>Qiniu-JavaScript-SDK （下文简称为 JS-SDK）适用于 IE8+、Chrome、Firefox、Safari 等浏览器，基于七牛云存储官方 API 构建，其中上传功能基于 Plupload 插件封装。开发者基于 JS-SDK 可以方便的从浏览器端上传文件至七牛云存储，并对上传成功后的图片进行丰富的数据处理操作。</p>
+<blockquote>
+<p>我从来不相信什么懒洋洋的自由。我向往的自由是通过勤奋和努力实现的更广阔的人生。我要做一个自由又自律的人，靠势必实现的决心认真地活着。不要做欲望的奴隶，自律可以令我们活得更高级。</p>
 </blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>因为七牛云的 JS-SDK 是基于 Plupload 插件封装的，所以我们需要在引入七牛云的 js 依赖文件前，引入 Plupload 的相关 js 依赖文件。我这里介绍使用 NPM 安装的方法。</p>
-<ul>
-<li><p>Plupload 下载</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install Plupload --save-dev</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>qiniu-js 下载</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install qiniu-js --save-dev</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在使用前我们需要在页面里引入相应的 js 依赖文件。</p>
-<ul>
-<li>在页面中引入 plupload，plupload.full.min.js（生产环境）或 引入 plupload.dev.js 和 moxie.js（开发调试）。这些 js 文件可在 node_modules 文件夹下的 plupload 的文件夹中找到。</li>
-<li>在页面中引入 qiniu.min.js（生产环境）或 qiniu.js（开发调试）这些 js 文件可在 node_modules 文件夹下的 qiniu-js 的文件夹中找到。</li>
-</ul>
-<p>例如</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//import js 具体路径可能会不同</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../../js/qiniu/plupload/plupload.dev.js"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../../js/qiniu/plupload/moxie.js"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../../js/qiniu/qiniu.js"</span>);</span><br></pre></td></tr></table></figure>
-<p>然后需要在页面中初始化 uploader，如下:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uploader = Qiniu.uploader(&#123;</span><br><span class="line">    disable_statistics_report: <span class="literal">false</span>, <span class="comment">// 禁止自动发送上传统计信息到七牛，默认允许发送</span></span><br><span class="line">    runtimes: <span class="string">"html5,flash,html4"</span>, <span class="comment">// 上传模式,依次退化</span></span><br><span class="line">    browse_button: <span class="string">"pickfiles"</span>, <span class="comment">// 上传选择的点选按钮，**必需**</span></span><br><span class="line">    <span class="comment">// 在初始化时，uptoken, uptoken_url, uptoken_func 三个参数中必须有一个被设置</span></span><br><span class="line">    <span class="comment">// 切如果提供了多个，其优先级为 uptoken &gt; uptoken_url &gt; uptoken_func</span></span><br><span class="line">    <span class="comment">// 其中 uptoken 是直接提供上传凭证，uptoken_url 是提供了获取上传凭证的地址，如果需要定制获取 uptoken 的过程则可以设置 uptoken_func</span></span><br><span class="line">    uptoken: <span class="string">"&lt;Your upload token&gt;"</span>, <span class="comment">// uptoken 是上传凭证，由其他程序生成</span></span><br><span class="line">    <span class="comment">// uptoken_url: "/uptoken", // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）</span></span><br><span class="line">    <span class="comment">// uptoken_func: function(file)&#123;    // 在需要获取 uptoken 时，该方法会被调用</span></span><br><span class="line">    <span class="comment">//    // do something</span></span><br><span class="line">    <span class="comment">//    return uptoken;</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    get_new_uptoken: <span class="literal">false</span>, <span class="comment">// 设置上传文件的时候是否每次都重新获取新的 uptoken</span></span><br><span class="line">    <span class="comment">// downtoken_url: '/downtoken',</span></span><br><span class="line">    <span class="comment">// Ajax请求downToken的Url，私有空间时使用,JS-SDK 将向该地址POST文件的key和domain,服务端返回的JSON必须包含`url`字段，`url`值为该文件的下载地址</span></span><br><span class="line">    unique_names: <span class="literal">false</span>, <span class="comment">// 默认 false，key 为文件名。若开启该选项，JS-SDK 会为每个文件自动生成key（文件名）</span></span><br><span class="line">    save_key: <span class="literal">false</span>, <span class="comment">// 默认 false。若在服务端生成 uptoken 的上传策略中指定了 `save_key`，则开启，SDK在前端将不对key进行任何处理</span></span><br><span class="line">    domain: <span class="string">"&lt;Your upload token&gt;"</span>, <span class="comment">// bucket 域名（就是你在七牛云上创建的存储空间的测试域名），下载资源时用到，如：'http://xxx.bkt.clouddn.com/' **必需**</span></span><br><span class="line">    container: <span class="string">"container"</span>, <span class="comment">// 上传区域 DOM ID，默认是 browser_button 的父元素，</span></span><br><span class="line">    max_file_size: <span class="string">"10mb"</span>, <span class="comment">// 最大文件体积限制</span></span><br><span class="line">    flash_swf_url: <span class="string">"../plupload/Moxie.swf"</span>, <span class="comment">//引入 flash,相对路径，这个也可以在 plupload 的文件夹中找到</span></span><br><span class="line">    max_retries: <span class="number">3</span>, <span class="comment">// 上传失败最大重试次数</span></span><br><span class="line">    dragdrop: <span class="literal">true</span>, <span class="comment">// 开启可拖曳上传</span></span><br><span class="line">    drop_element: <span class="string">"photo-container"</span>, <span class="comment">// 拖曳上传区域元素的 ID，拖曳文件或文件夹后可触发上传</span></span><br><span class="line">    chunk_size: <span class="string">"4mb"</span>, <span class="comment">// 分块上传时，每块的体积</span></span><br><span class="line">    auto_start: <span class="literal">true</span>, <span class="comment">// 选择文件后自动上传，若关闭需要自己绑定事件触发上传,</span></span><br><span class="line">    <span class="comment">//x_vars : &#123;</span></span><br><span class="line">    <span class="comment">//    自定义变量，参考http://developer.qiniu.com/docs/v6/api/overview/up/response/vars.html</span></span><br><span class="line">    <span class="comment">//    'time' : function(up,file) &#123;</span></span><br><span class="line">    <span class="comment">//        var time = (new Date()).getTime();</span></span><br><span class="line">    <span class="comment">// do something with 'time'</span></span><br><span class="line">    <span class="comment">//        return time;</span></span><br><span class="line">    <span class="comment">//    &#125;,</span></span><br><span class="line">    <span class="comment">//    'size' : function(up,file) &#123;</span></span><br><span class="line">    <span class="comment">//        var size = file.size;</span></span><br><span class="line">    <span class="comment">// do something with 'size'</span></span><br><span class="line">    <span class="comment">//        return size;</span></span><br><span class="line">    <span class="comment">//    &#125;</span></span><br><span class="line">    <span class="comment">//&#125;,</span></span><br><span class="line">    init: &#123;</span><br><span class="line">        FilesAdded: <span class="function"><span class="keyword">function</span>(<span class="params">up, files</span>) </span>&#123;</span><br><span class="line">            plupload.each(files, <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// 文件添加进队列后,处理相关的事情</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        BeforeUpload: <span class="function"><span class="keyword">function</span>(<span class="params">up, file</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 每个文件上传前,处理相关的事情</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"上传开始"</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        UploadProgress: <span class="function"><span class="keyword">function</span>(<span class="params">up, file</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 每个文件上传时,处理相关的事情</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"上传中"</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        FileUploaded: <span class="function"><span class="keyword">function</span>(<span class="params">up, file, info</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 每个文件上传成功后,处理相关的事情</span></span><br><span class="line">            <span class="comment">// 其中 info.response 是文件上传成功后，服务端返回的json，形式如</span></span><br><span class="line">            <span class="comment">// &#123;</span></span><br><span class="line">            <span class="comment">//    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",</span></span><br><span class="line">            <span class="comment">//    "key": "gogopher.jpg"</span></span><br><span class="line">            <span class="comment">//  &#125;</span></span><br><span class="line">            <span class="comment">// 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> domain = up.getOption(<span class="string">"domain"</span>);</span><br><span class="line">            <span class="keyword">var</span> res = <span class="built_in">JSON</span>.parse(info.response);</span><br><span class="line">            <span class="keyword">var</span> sourceLink = domain + res.key; <span class="comment">//获取上传成功后的文件的Url;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="built_in">Error</span>: <span class="function"><span class="keyword">function</span>(<span class="params">up, err, errTip</span>) </span>&#123;</span><br><span class="line">            base.hideLoading();</span><br><span class="line">            <span class="comment">//上传出错时,处理相关的事情</span></span><br><span class="line">            <span class="keyword">if</span> (file.code == <span class="string">"-600"</span>) &#123;</span><br><span class="line">                base.showAlertDialog(<span class="string">"上传图片的大小不能超过10mb！"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (file.code == <span class="string">"-601"</span>) &#123;</span><br><span class="line">                base.showAlertDialog(<span class="string">"上传图片的格式有误！"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                base.showAlertDialog(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        UploadComplete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">//队列文件处理完毕后,处理相关的事情</span></span><br><span class="line">        &#125;,</span><br><span class="line">        Key: <span class="function"><span class="keyword">function</span>(<span class="params">up, file</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 若想在前端对每个文件的key进行个性化处理，可以配置该函数</span></span><br><span class="line">            <span class="comment">// 我使用的是图片名加上当前时间来定义key</span></span><br><span class="line">            <span class="comment">// 该配置必须要在 unique_names: false , save_key: false 时才生效</span></span><br><span class="line">            <span class="comment">// do something with key here</span></span><br><span class="line">            <span class="keyword">var</span> timestamp = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">            <span class="keyword">var</span> key = file.name + <span class="string">"/"</span> + timestamp;</span><br><span class="line">            <span class="keyword">return</span> key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// domain 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置-&gt;基本设置-&gt;域名设置"查看获取</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// uploader 为一个 plupload 对象，继承了所有 plupload 的方法，参考http://plupload.com/docs</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>以上 uploader 的配置适用于单文件上传的情况。相信小伙伴们看完都有一个疑惑，什么是 uptoken 呢？ uptoken 是 我们图片上传的上传凭证，它会根据你的 Access Key 和 Secret Key 还有你上传图片到的存储空间 bucket 来生成(最基本的三项)。那么怎么生成 uptoken 呢？这当然不是由我们前端自己来生成的，这个时候就需要我们后端的小伙伴来帮帮忙了。具体可以参考我的另一篇博客,通过 java 生成七牛云 uptoken。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>关于七牛云上传组件的用法还有很多，如对上传的图片生成水印等，大家可以好好参考一下官方文档。我总结的只是一些最简单的用法，目前我的小 demo 只需要用到这一些，以后有需要再继续拓展 :)</p>
+<h2 id="一、自律，可以让我们活得更高级"><a href="#一、自律，可以让我们活得更高级" class="headerlink" title="一、自律，可以让我们活得更高级"></a>一、自律，可以让我们活得更高级</h2><p>在新的一年，做到自律，你才能活得更高级。</p>
+<p>前些天，男神钟汉良在一天内发了 4 条微博，晒出了他的早餐、午餐和晚餐。</p>
+<blockquote>
+<p>早餐是一片吐司加蛋，外加两颗蘑菇和圣女果。</p>
+<p>午餐是满满的一盘蔬菜，搭配米兰大教堂形状的意大利面。</p>
+<p>晚餐是自制蔬菜沙拉和燕麦小点心。</p>
+</blockquote>
+<p>清淡又营养的三餐里，藏着他在饮食方面的自律。</p>
+<p>出道 20 多年，钟汉良始终保持着良好的身材和不变的容颜。连见多识广的记者、节目主持人也惊叹于他皮肤的质感，调侃他是不是睡在冰箱里。</p>
+<p>然而，正如泰迪·罗斯福所说：“有了自律能力，没有什么事情是你做不到的。”</p>
+<p>多少人羡慕着别人的身材与样貌，羡慕着别人的成功与精彩。但是当了解到其背后付出的艰辛和近乎残酷的自我管理后，又迅速打起了退堂鼓。在浑浑噩噩、随波逐流的日子里，继续毫无意义地耗费生命。</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu6-2.webp" alt="配图6-2"></p>
+<p>知乎上有这样一个问题：你最深刻的错误认识是什么？</p>
+<p>点赞最高的回答是：以为自由就是想做什么就做什么，后来才发现自律者才会有自由。</p>
+<p>当一个人缺乏自律的时候，他做的事情总是在受习惯和及时诱惑的影响，要么就是被他人的思想观念所扰，几乎永远不可能去做内心真正渴望的事。</p>
+<p>你会发现：那些自律到极致的人，都拥有了开挂的人生。</p>
+<h2 id="二、自律，是解决人生问题的首要方案"><a href="#二、自律，是解决人生问题的首要方案" class="headerlink" title="二、自律，是解决人生问题的首要方案"></a>二、自律，是解决人生问题的首要方案</h2><p>谷歌有位高级工程师，叫马特·卡茨。</p>
+<p>他给自己定下了一个 30 天改变的计划，每天做一些之前未能坚持的事。</p>
+<p>比如：每天骑自行车上班，每天步行 10000 步，每天拍一张照片，写一本 5 万字的小说；</p>
+<p>不看电视，不吃糖，不玩推特，拒绝咖啡因…..</p>
+<p>可以说这份计划充满了挑战性，做不到自律的人势必无法完成。</p>
+<p>但马特坚持了下来。</p>
+<p>30 天后，昔日那个肥腻的宅男工程师不见了，他开始发自内心地喜欢上骑自行车去工作，甚至完成了在非洲最高峰乞力马扎罗山的远足。</p>
+<p>心理学家曾经总结过这样的规律：</p>
+<p>自律的前期是兴奋的，中期是痛苦的，后期是享受的。</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu6-3.webp" alt="配图6-3"></p>
+<p>但有没有发现，大部分人都在自律的中期——痛苦期徘徊太久，以至于把痛苦当作是自律。</p>
+<p>而当你自律到极致，你会发现：自律能够带给你发自内心的平静和享受。</p>
+<p>因为你知道，自己在一天天地改变，自律已经变成了一种深入骨髓的习惯。</p>
+<p>正如李开复所说：“千万不要放纵自己，给自己找借口。对自己严格一点，时间长了，自律便成为一种习惯，一种生活方式，你的人格和智慧也因此变得更加完美。”</p>
+<p>《少有人走的路》里有这样一句话：</p>
+<p>解决人生问题的首要方案，乃是自律。缺少了这一环，你不可能解决任何麻烦和困难。</p>
+<p>那么，如何才能将自律坚持到极致？</p>
+<h2 id="三、自律，其实并没有那么难"><a href="#三、自律，其实并没有那么难" class="headerlink" title="三、自律，其实并没有那么难"></a>三、自律，其实并没有那么难</h2><p>《毅力——如何培养自律的习惯》这本书中介绍了 3 种方法，更新了我对自律的认知。</p>
+<p>① 设立具体目标，坚持无一例外原则</p>
+<p>我的表妹小蕊，每天嚷嚷着减肥，却从未成功过。</p>
+<p>原因之一，想必就在于没有设定具体的目标。</p>
+<p>无数研究显示：当人们用具体的条文对他们的目标进行定义后，他们成功的可能性就会大大增加。</p>
+<p>大多数制定了明确目标的减肥者（比如：我要在 2 个月内瘦下 10 斤），会比那些目标含糊不清的减肥者减肥效果要好得多。</p>
+<p>目标明确是很重要的，因为明确的目标可以减少思想上的歧义和执行中的变异。</p>
+<p>设定目标之后，需要坚持“无一例外”的原则。</p>
+<p>比方说，目标是在 2 个月内瘦下 10 斤，就坚持在达到减肥目标之前，一点甜点都不吃。</p>
+<p>如果不坚持这项原则，那么每次面对甜点时，都必须决定是否要放纵自己。</p>
+<p>在进行考虑的过程中，将会耗费能量，而这些能量，是维持毅力的关键。</p>
+<p>所以，一旦给自己下了绝对不破例的原则，就不会再把能量花在一遍又一遍、无休止的自我纠结上。</p>
+<p>那些自律到极致的人，都坚持了无一例外原则。</p>
+<blockquote>
+<p>蔡依林从不吃任何有油的食品，甚至有三年的时间内没有吃过米饭；</p>
+<p>杨丽萍为了呈现最完美的舞蹈，几乎没有吃过一顿饱饭；</p>
+<p>刘德华为了保持身材，几十年来都保持着每天一杯酸奶的习惯。</p>
+</blockquote>
+<p>一旦你对某件事情百分之百地投入，那就不可能再有例外。事情已成定局，再也没有商量的余地。</p>
+<p>放纵如山倒，自律如抽丝。</p>
+<p>不要给自己找借口放纵，对自己严格一点，让自律成为一种习惯、原则。</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu6-4.webp" alt="配图6-4"></p>
+<p>② 一次只完成一项任务，不要过多消耗毅力</p>
+<p>在改变自己的道路上，许多人会一次性给自己定下太多目标：</p>
+<p>比如，半年内练出马甲线、考过 XX 考试、看 50 本书、看美剧不需要字幕……</p>
+<p>然而，毅力就像人的肌肉一样，会产生疲劳。同时接受太多挑战，通常无法坚持实施下去。</p>
+<p>有一个著名的实验：</p>
+<p>100 个人被随机分为三组。</p>
+<p>A 组中的每个成员都得到了一盘小萝卜，并被要求全部吃光。</p>
+<p>B 组中的每个成员都得到了一盘饼干，并被要求全部吃光。</p>
+<p>C 组中的每个成员可以选择他想要吃的东西，或者什么都不吃。</p>
+<p>在所有的萝卜和饼干都被吃光以后，每个人都被要求解答同一道难题，这道难题实际上根本没有答案。</p>
+<p>B 组和 C 组的人在猜了大约 15 分钟之后放弃，A 组的人只猜了 7 分钟就缴械投降了。</p>
+<p>研究者从这次实验中得出结论：A 组成员已经耗尽了所有的毅力去吃掉那些萝卜，而 B 组和 C 组成员仍有大量的毅力去解那道难题。</p>
+<p>意志力就像手机的剩余电量一样。</p>
+<p>每天早晨你都是充满电的，随着你不断使用你的电力，最后电力耗尽，你也就毫无意志力可言。</p>
+<p>你在一件事上用的意志力太多，不等它恢复就投入下一件事，那么肯定会疲惫不堪。</p>
+<p>注意保存你的意志力，以便在最需要的时候使用。</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu6-5.webp" alt="配图6-5"></p>
+<p>③ 把挑战分解成小而易于管理的目标</p>
+<p>太多人幻想着能够一蹴而就，一夜之间达成目标。</p>
+<p>当完成一个任务所需的时间跨度很长、难度很大时，许多人容易半途而废。</p>
+<p>这个时候，需要学会对任务进行分解。</p>
+<p>日本著名的马拉松运动员山田本一，曾在自传中写到自己成功的秘密：</p>
+<blockquote>
+<p>每次比赛前，我都要乘车把比赛的路线仔细看一遍，并把沿途比较醒目的标志画下来。比如，第一标志是银行，第二标志是古怪的大树，第三标志是一座高楼……<br>这样一直画到赛程的结束。比赛开始后，我就奋力向第一个目标冲去，到达第一个目标后，我又以同样的速度向第二个目标冲去。<br>40 多公里的赛程，被我分解成几个小目标，跑起来就轻松多了。开始我把我的目标定在终点线的旗帜上，结果跑</p>
+</blockquote>
+<p>到十几公里的时候就疲惫不堪了，因为我被前面那段遥远的路吓到了。通往目的地的道路是由许多细小的、易于管理的步骤组成的。</p>
+<p>不要总想着毕其功于一役。</p>
+<p>慢一点、稳一点，关键在于把大目标分解成易于消化、循序渐进的小目标。</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu6-6.webp" alt="配图6-6"></p>
+<h2 id="四、自律，人生自由的必经之路"><a href="#四、自律，人生自由的必经之路" class="headerlink" title="四、自律，人生自由的必经之路"></a>四、自律，人生自由的必经之路</h2><p>以前总觉得，人生苦短，应及时行乐。</p>
+<p>今朝有酒今朝醉，人不风流枉少年。</p>
+<p>直到后来，我渐渐发现：</p>
+<p>每一个不自律的行为，都会给你带来更大的痛苦。</p>
+<p>长期暴饮暴食、缺乏运动，会让你不得不为自己的健康付出代价；</p>
+<p>熬夜打游戏、刷微博，带来的是第二天的无精打采、浑浑噩噩；</p>
+<p>没有目标、得过且过，会让你迷失方向、日渐空虚。</p>
+<p>设计师山本耀司说：</p>
+<p>我从来不相信什么懒洋洋的自由。我向往的自由是通过勤奋和努力实现的更广阔的人生。</p>
+<p>我要做一个自由又自律的人，靠势必实现的决心认真地活着。</p>
+<p>不要做欲望的奴隶，自律可以令我们活得更高级。</p>
+<p>新的一年，成为自律的人，共勉。</p>
+<h2 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h2><p><a href="https://mp.weixin.qq.com/s?srcid=0217Q148n0ebl25FBA6Oou2Q&amp;scene=22&amp;mid=2653195930&amp;sn=4c6b75245c3c8afe581917d42287740e&amp;idx=1&amp;__biz=MzA4MjAxODMzMA%3D%3D&amp;chksm=845c07efb32b8ef917c3fd98b6fb1e88ecef3bda01318e83327b6f7071d27ab392deff5e3566&amp;mpshare=1#rd" target="_blank" rel="noopener">那些自律到极致的人，都拥有了开挂的人生——原文地址</a></p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>我从来不相信什么懒洋洋的自由。我向往的自由是通过勤奋和努力实现的更广阔的人生。以此共勉！</p>
 
       
     </div>
@@ -522,9 +602,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/七牛云/" rel="tag"><i class="fa fa-tag"></i> 七牛云</a>
+            <a href="/tags/感悟/" rel="tag"><i class="fa fa-tag"></i> 感悟</a>
           
-            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+            <a href="/tags/自律/" rel="tag"><i class="fa fa-tag"></i> 自律</a>
           
         </div>
       
@@ -537,8 +617,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/MarkdownStudy.html" rel="next" title="Markdown—文档解读">
-                <i class="fa fa-chevron-left"></i> Markdown—文档解读
+              <a href="/阿里云ECS基于Linux系统部署javaweb项目.html" rel="next" title="阿里云ECS基于Linux系统部署javaweb项目">
+                <i class="fa fa-chevron-left"></i> 阿里云ECS基于Linux系统部署javaweb项目
               </a>
             
           </div>
@@ -546,10 +626,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/通过java生成七牛云uptoken.html" rel="prev" title="通过java生成七牛云uptoken">
-                通过java生成七牛云uptoken <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -725,7 +801,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">2.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">3.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">5.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">6.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、自律，可以让我们活得更高级"><span class="nav-number">2.</span> <span class="nav-text">一、自律，可以让我们活得更高级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、自律，是解决人生问题的首要方案"><span class="nav-number">3.</span> <span class="nav-text">二、自律，是解决人生问题的首要方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、自律，其实并没有那么难"><span class="nav-number">4.</span> <span class="nav-text">三、自律，其实并没有那么难</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、自律，人生自由的必经之路"><span class="nav-number">5.</span> <span class="nav-text">四、自律，人生自由的必经之路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原文地址"><span class="nav-number">6.</span> <span class="nav-text">原文地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">7.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
