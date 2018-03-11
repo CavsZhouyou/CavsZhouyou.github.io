@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="前端,JavaScript,数据类型,undefined," />
+  <meta name="keywords" content="前端,JavaScript,七牛云," />
 
 
 
@@ -88,20 +88,20 @@
 
 
 
-<meta name="description" content="写在前面JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。">
-<meta name="keywords" content="前端,JavaScript,数据类型,undefined">
+<meta name="description" content="写在前面最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。">
+<meta name="keywords" content="前端,JavaScript,七牛云">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript深入理解之undefined与null">
-<meta property="og:url" content="http://cavszhouyou.top/js深入理解之undefined与null.html">
+<meta property="og:title" content="通过JavaScript实现七牛云图片上传">
+<meta property="og:url" content="http://cavszhouyou.top/通过JavaScript实现七牛云图片上传.html">
 <meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
-<meta property="og:description" content="写在前面JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。">
+<meta property="og:description" content="写在前面最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu7-1.jpg">
-<meta property="og:updated_time" content="2018-03-11T09:14:28.766Z">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu2-1.jpg">
+<meta property="og:updated_time" content="2018-03-11T09:26:08.116Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript深入理解之undefined与null">
-<meta name="twitter:description" content="写在前面JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。">
-<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu7-1.jpg">
+<meta name="twitter:title" content="通过JavaScript实现七牛云图片上传">
+<meta name="twitter:description" content="写在前面最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。">
+<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu2-1.jpg">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://cavszhouyou.top/js深入理解之undefined与null.html"/>
+  <link rel="canonical" href="http://cavszhouyou.top/通过JavaScript实现七牛云图片上传.html"/>
 
 
 
 
 
-  <title>JavaScript深入理解之undefined与null | CavsZhouyou's Blog</title>
+  <title>通过JavaScript实现七牛云图片上传 | CavsZhouyou's Blog</title>
   
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/js深入理解之undefined与null.html">
+    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/通过JavaScript实现七牛云图片上传.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CavsZhouyou">
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript深入理解之undefined与null</h1>
+          <h1 class="post-title" itemprop="name headline">通过JavaScript实现七牛云图片上传</h1>
         
 
         <div class="post-meta">
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T10:59:26+08:00">
-                2018-03-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T19:54:47+08:00">
+                2018-02-06
               </time>
             
 
@@ -372,19 +372,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/七牛云/" itemprop="url" rel="index">
+                    <span itemprop="name">七牛云</span>
                   </a>
                 </span>
 
@@ -421,7 +410,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,806字
+                  1,774字
                 </span>
               
 
@@ -437,7 +426,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10分钟
+                  7分钟
                 </span>
               
             </div>
@@ -458,117 +447,35 @@
       
 
       
-        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu7-1.jpg" alt="配图7-1"></p>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。</p>
+        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu2-1.jpg" alt="七牛云图片上传配图"></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。</p>
 <a id="more"></a>
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>在介绍undefined与null之前，我们先来了解一下ECMAScript中的数据类型。在ECMAScript中有五种简单数据类型(也称为基本数据类型): Undefined、Null、Boolean、Number 和 String 。还有一种复杂数据类型——Object。</p>
-<p>没错，首字母大写的Undefined与Null其实都属于ECMAScript中的基本数据类型。这两个数据类型是五种数据类型中最特殊的两个类型，因为它们都只有唯一的一个值，分别是undefined与null，就是我们今天要介绍的两个主角。</p>
-<h2 id="Undefined-类型"><a href="#Undefined-类型" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>上面我们说过了，Undefined类型只有一个值，就是特殊的undefined，在两种情况下我们会得到undefined：</p>
-<ol>
-<li><p>声明了一个变量，但未对其初始化时，这个变量的值就是undefined。</p>
-<pre><code class="js"><span class="keyword">var</span> data;
-<span class="built_in">console</span>.log(data === <span class="literal">undefined</span>); <span class="comment">//true</span>
-</code></pre>
-<p>那么我么是否可以显式地把一个变量初始化为undefined呢，答案是可以的。</p>
-<pre><code class="js"><span class="keyword">var</span> data = <span class="literal">undefined</span>;
-<span class="built_in">console</span>.log(data === <span class="literal">undefined</span>); <span class="comment">//true</span>
-
-<span class="keyword">var</span> value = <span class="number">1</span>;
-<span class="built_in">console</span>.log(data); <span class="comment">//1</span>
-
-value = <span class="literal">undefined</span>;
-<span class="built_in">console</span>.log(data === <span class="literal">undefined</span>); <span class="comment">// true</span>
-</code></pre>
-<p>一般而言，我们不存在需要显式地把一个变量设置为undefined值的情况，因为对于未经初始化的值默认就会取得undefined值，而已经初始化的值再将其赋值为undefined来表示空值是没有意义且不可取的。况且字面值undefined的主要目的以用于比较，来区分空对象指针(后面我们会介绍到这指的就是null)与未经初始化的变量的情况。</p>
-</li>
-<li><p>对未定义的变量执行typeof操作符也会返回undefined</p>
-<pre><code class="js"><span class="comment">//data变量未定义</span>
-<span class="keyword">var</span> value;
-
-<span class="built_in">console</span>.log(<span class="keyword">typeof</span> data); <span class="comment">// "undefined"</span>
-<span class="built_in">console</span>.log(<span class="keyword">typeof</span> value); <span class="comment">// "undefined"</span>
-</code></pre>
-<p>这里我们没有使用<code>===</code>来判断，因为对于尚未声明过的变量，我们只能执行一项操作，即使用typeof操作符检测其数据类型，使用其他的操作都会报错。</p>
-<pre><code class="js"><span class="comment">//data变量未定义</span>
-
-<span class="built_in">console</span>.log(data === <span class="literal">undefined</span>); <span class="comment">//报错</span>
-</code></pre>
-<p>结果表明对未初始化和未声明的变量执行typeof操作符都返回了undefined值，这个结果有其逻辑上的合理性。因为虽然这两种变量从技术角度看有本质区别，但实际上无论对哪种变量也不可能执行真正的操作。</p>
-</li>
-</ol>
-<p>还有其他几种情况也会返回undefined，比如一个函数如果没有使用return语句指定返回值，就会返回一个undefined值，或者调用函数时没有传参数值，参数同样也会被初始化为undefined值。这些都是属于上面两种情况在代码中的体现，这里就不单独解释了。 </p>
-<h3 id="全局属性-window-undefined"><a href="#全局属性-window-undefined" class="headerlink" title="全局属性 window.undefined"></a>全局属性 window.undefined</h3><p>从上面的例子我们可以看出，无论我们是否初始化过变量，都可以给变量赋值为undefined。其实这里用于赋值的undefined不是一个值，它是一个属性名，undefined是全局对象的一个属性，也就是说，它是全局作用域的一个变量，即<code>window.undefined</code>，而<code>window.undefined</code>这个属性的值才是前面所说的原始值undefined。<code>data = undefined;</code>这就相当于把一个变量<code>window.undefined</code>的值赋值给另一个变量<code>data</code>，这个值就是原始值undefined。其实在JavaScript代码中,我们看到的undefined大多数情况指的都是<code>window.undefined</code>(本篇文章中多数情况下也是，原始值undefined除外)，原始值undefined多数情况下只存在于文档或规范中,不存在于JavaScript代码中(具体可以理解为代码中参与判断、比较或赋值的都是<code>window.undefined</code>，而在控制台中输出，或函数中返回的则是原始值undefined)。</p>
-<pre><code class="js"><span class="built_in">console</span>.log(<span class="built_in">window</span>.undefined); <span class="comment">//原始值undefined</span>
-</code></pre>
-<p>注意，在ES3之前其实是没有原始值undefined这个值的，第三版引入这个值，其实是为了正式区分空对象指针(后面我们会介绍到这指的就是null)与未经初始化的变量。在ES3中,<code>window.undefined</code>就是一个普通的属性，我们完全可以把它的值改为任何真值。但从ES5之后,<code>window.undefined</code>成了一个不可写,不可配置的数据属性,它的值永远是undefined。</p>
-<h3 id="局部属性-undefined"><a href="#局部属性-undefined" class="headerlink" title="局部属性 undefined"></a>局部属性 undefined</h3><p>大家可能注意到了，上面我提到的是在大多数情况下undefined指的都是<code>window.undefined</code>，那还有什么其他情况吗？其实在ECMAScript中，undefined不是一个保留字，这意味着什么呢？也就是说我们可以将undefined作为一个局部变量来使用，就像局部作用域中任何其他普通变量一样，没有任何特殊性，我们可以对其赋予任何类型的值。</p>
-<pre><code class="js">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="keyword">var</span> <span class="literal">undefined</span> = <span class="string">'not is undefined'</span>;
-    <span class="built_in">console</span>.log(<span class="literal">undefined</span>); <span class="comment">//"not is undefined"</span>
-    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">undefined</span>) <span class="comment">// "string"</span>
-})()
-</code></pre>
-<p>我们可以看到undefined的值和类型都已经改变，这样的做法是非常不友好的，这样会使我们的代码难以维护和排错。</p>
-<h3 id="undefined-判断"><a href="#undefined-判断" class="headerlink" title="undefined 判断"></a>undefined 判断</h3><p>如何判断一个变量是否为undefined，这里有两种方法。</p>
-<ol>
-<li><p>使用严格相等符<code>===</code>或不相等操作符<code>!==</code>来决定一个变量是否拥有值，这里不使用标准相等操作符<code>==</code>,是因为标准相等符还会会检查变量是不是为null，但是严格相等操作符不会检查。null不等同于undefined，这点我们会在后面讲到。</p>
-</li>
-<li><p>使用typeof操作符，这种方式我们在上面已经使用过了，对未定义的变量检测时只能使用这种方式，要不然会出现报错。</p>
-</li>
-</ol>
-<h3 id="void-0"><a href="#void-0" class="headerlink" title="void 0"></a>void 0</h3><p>上面我们提到过了，undefined作为局部变量使用是可以被重写的，那么如果我们使用下面这种判断方式，是有风险的。</p>
-<pre><code class="js"><span class="keyword">if</span>(data === <span class="literal">undefined</span>){
-    <span class="comment">//do something</span>
-}
-</code></pre>
-<p>那么我们怎样做才能确保万无一失呢?让我们先来了解一下void运算符,官方文档是这样解释的:</p>
-<blockquote>
-<p>The void operator evaluates the given expression and then returns undefined.</p>
-<p>void 运算符 对给定的表达式进行求值，然后返回 undefined</p>
+<h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><ul>
+<li><a href="https://github.com/qiniu/js-sdk/#usage" title="七牛云Qiniu-JavaScript-SDK官方文档" target="_blank" rel="noopener">七牛云 Qiniu-JavaScript-SDK 官方文档</a></li>
+</ul>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>Qiniu-JavaScript-SDK （下文简称为 JS-SDK）适用于 IE8+、Chrome、Firefox、Safari 等浏览器，基于七牛云存储官方 API 构建，其中上传功能基于 Plupload 插件封装。开发者基于 JS-SDK 可以方便的从浏览器端上传文件至七牛云存储，并对上传成功后的图片进行丰富的数据处理操作。</p>
 </blockquote>
-<p>什么意思呢？就是使用void对后面的表达式求值，无论结果是多少，都会返回原始值undefined。因此我们可以用<code>void 0</code>来代替undefined进行判断，因为<code>void 0</code>始终返回的都是原始值undefined。</p>
-<pre><code class="js"><span class="keyword">var</span> data;
-<span class="built_in">console</span>.log(data === <span class="keyword">void</span> <span class="number">0</span>); <span class="comment">//true</span>
-</code></pre>
-<h2 id="Null类型"><a href="#Null类型" class="headerlink" title="Null类型"></a>Null类型</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>Null类型是第二个只有一个值的数据类型，这个特殊的值就是null。值 null 是一个字面量，它不像undefined 是全局对象的一个属性。从逻辑角度来看，null值表示一个空对象指针，指示变量未指向任何对象。把 null 作为尚未创建的对象，也许更好理解。在 APIs 中，null 常在返回类型是对象，但没关联值的地方使用，就像下面一个例子。</p>
-<pre><code class="js"><span class="comment">//document.getElementById() 可以返回对拥有指定 ID 的第一个对象的引用</span>
-
-<span class="keyword">var</span> $container = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>); <span class="comment">// 注意:container是不存在的</span>
-
-<span class="built_in">console</span>.log($container); <span class="comment">// null</span>
-</code></pre>
-<h3 id="typeof-null"><a href="#typeof-null" class="headerlink" title="typeof null"></a>typeof null</h3><p>当我们使用typeof操作符检测null值，我们理所应当地认为应该返”Null”类型呀，但是事实返回的类型却是”object”。</p>
-<pre><code class="js"><span class="keyword">var</span> data = <span class="literal">null</span>;
-<span class="built_in">console</span>.log(<span class="keyword">typeof</span> data); <span class="comment">// "object"</span>
-</code></pre>
-<p>是不是很奇怪？其实我们可以从两方面来理解这个结果</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>因为七牛云的 JS-SDK 是基于 Plupload 插件封装的，所以我们需要在引入七牛云的 js 依赖文件前，引入 Plupload 的相关 js 依赖文件。我这里介绍使用 NPM 安装的方法。</p>
 <ul>
-<li><p>一方面从逻辑角度来看，null值表示一个空对象指针，它代表的其实就是一个空对象，所以使用typeof操作符检测时返回”object”也是可以理解的。</p>
+<li><p>Plupload 下载</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install Plupload --save-dev</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>另一方面，其实在JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 null 代表的是空指针（大多数平台下值为 0x00），因此，null的类型标签也成为了 0，typeof null就错误的返回了”object”。在ES6中，当时曾经有提案为历史平凡, 将type null的值纠正为null, 但最后提案被拒了,所以还是保持”object”类型。</p>
+<li><p>qiniu-js 下载</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install qiniu-js --save-dev</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="null-判断"><a href="#null-判断" class="headerlink" title="null 判断"></a>null 判断</h3><p>null的判断可以使用严格相等符<code>===</code>或不相等操作符<code>!==</code>判断，不使用标准相等符的原因是因为undefined会影响判断结果。和undefined不一样，不能使用typeof来判断一个值是否为null，原因上边已经讲了，使用typeof来检测null会返回”object”,这样的话我们是没办法判断的。</p>
-<pre><code class="js"><span class="keyword">if</span>(data === <span class="literal">null</span>){
-    <span class="built_in">console</span>.log(<span class="string">"data中没有保存对象引用！"</span>);
-}
-</code></pre>
-<h3 id="null-使用"><a href="#null-使用" class="headerlink" title="null 使用"></a>null 使用</h3><p>那么我们在什么情况下需要将变量赋值为null呢？这里我想到的有两种情况。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在使用前我们需要在页面里引入相应的 js 依赖文件。</p>
 <ul>
-<li><p>如果定义的变量在将来用于保存对象，那么最好将该变量初始化为null，而不是其他值。换句话说，只要意在保存对象的变量还没有真正保存对象，就应该明确地让该变量保存null值，这样有助于进一步区分null和undefined。</p>
-</li>
-<li><p>当我们使用完一个占用内存比较大的对象时，我们需要对其进行内存释放，我们可以将变量赋值为null，表示该对象不再有任何引用，从而释放内存。 </p>
-</li>
+<li>在页面中引入 plupload，plupload.full.min.js（生产环境）或 引入 plupload.dev.js 和 moxie.js（开发调试）。这些 js 文件可在 node_modules 文件夹下的 plupload 的文件夹中找到。</li>
+<li>在页面中引入 qiniu.min.js（生产环境）或 qiniu.js（开发调试）这些 js 文件可在 node_modules 文件夹下的 qiniu-js 的文件夹中找到。</li>
 </ul>
-<h2 id="undefined-与-null"><a href="#undefined-与-null" class="headerlink" title="undefined 与 null"></a>undefined 与 null</h2><p>实际上undefined值是派生自null值的，因此ECMA-262规定对它们的相等性测试要返回true:</p>
-<pre><code class="js"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">//true</span>
-</code></pre>
-<p>因为使用的是标准相等符<code>==</code>,这个操作符出于目的会转换其操作数为相同类型后再做比较，如果我们使用严格相等符比较，我们会发现它们是不相等的，因为严格相等符不会进行类型转换，然而undefined与null属于不同的类型，所以不相等。</p>
-<pre><code class="js"><span class="built_in">console</span>.log(<span class="literal">null</span> === <span class="literal">undefined</span>); <span class="comment">//false</span>
-</code></pre>
-<p>尽管null和undefined有这样的关系，但上面我们已经提到过了，它们的用途完全不同，我们在平常使用时一定要学会区分。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>《JavaScript高级程序设计(第三版)》<br> <a href="http://www.css88.com/archives/6236" target="_blank" rel="noopener">JavaScript中undefined和null的区别</a><br> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null" target="_blank" rel="noopener">JavaScript 参考文档 null</a><br> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined" target="_blank" rel="noopener">JavaScript 参考文档 undefined</a><br> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="noopener">JavaScript 参考文档 typeof</a></p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>花了一些时间来总结undefined与null的用法和区别，以前一直没有注意，经过这次总结才发现它们所代表的的意义和用法完全不同。可能在平常使用的时候我们不需要考虑这么多问题，但通过重新看一些东西，总结一些东西，通过这样的方式对我来说收获挺大的。本篇文章纯属个人的学习总结，如果文章中存在错误的地方，希望大家可以向我指出。</p>
+<p>例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//import js 具体路径可能会不同</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../../js/qiniu/plupload/plupload.dev.js"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../../js/qiniu/plupload/moxie.js"</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"../../js/qiniu/qiniu.js"</span>);</span><br></pre></td></tr></table></figure>
+<p>然后需要在页面中初始化 uploader，如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uploader = Qiniu.uploader(&#123;</span><br><span class="line">    disable_statistics_report: <span class="literal">false</span>, <span class="comment">// 禁止自动发送上传统计信息到七牛，默认允许发送</span></span><br><span class="line">    runtimes: <span class="string">"html5,flash,html4"</span>, <span class="comment">// 上传模式,依次退化</span></span><br><span class="line">    browse_button: <span class="string">"pickfiles"</span>, <span class="comment">// 上传选择的点选按钮，**必需**</span></span><br><span class="line">    <span class="comment">// 在初始化时，uptoken, uptoken_url, uptoken_func 三个参数中必须有一个被设置</span></span><br><span class="line">    <span class="comment">// 切如果提供了多个，其优先级为 uptoken &gt; uptoken_url &gt; uptoken_func</span></span><br><span class="line">    <span class="comment">// 其中 uptoken 是直接提供上传凭证，uptoken_url 是提供了获取上传凭证的地址，如果需要定制获取 uptoken 的过程则可以设置 uptoken_func</span></span><br><span class="line">    uptoken: <span class="string">"&lt;Your upload token&gt;"</span>, <span class="comment">// uptoken 是上传凭证，由其他程序生成</span></span><br><span class="line">    <span class="comment">// uptoken_url: "/uptoken", // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）</span></span><br><span class="line">    <span class="comment">// uptoken_func: function(file)&#123;    // 在需要获取 uptoken 时，该方法会被调用</span></span><br><span class="line">    <span class="comment">//    // do something</span></span><br><span class="line">    <span class="comment">//    return uptoken;</span></span><br><span class="line">    <span class="comment">// &#125;,</span></span><br><span class="line">    get_new_uptoken: <span class="literal">false</span>, <span class="comment">// 设置上传文件的时候是否每次都重新获取新的 uptoken</span></span><br><span class="line">    <span class="comment">// downtoken_url: '/downtoken',</span></span><br><span class="line">    <span class="comment">// Ajax请求downToken的Url，私有空间时使用,JS-SDK 将向该地址POST文件的key和domain,服务端返回的JSON必须包含`url`字段，`url`值为该文件的下载地址</span></span><br><span class="line">    unique_names: <span class="literal">false</span>, <span class="comment">// 默认 false，key 为文件名。若开启该选项，JS-SDK 会为每个文件自动生成key（文件名）</span></span><br><span class="line">    save_key: <span class="literal">false</span>, <span class="comment">// 默认 false。若在服务端生成 uptoken 的上传策略中指定了 `save_key`，则开启，SDK在前端将不对key进行任何处理</span></span><br><span class="line">    domain: <span class="string">"&lt;Your upload token&gt;"</span>, <span class="comment">// bucket 域名（就是你在七牛云上创建的存储空间的测试域名），下载资源时用到，如：'http://xxx.bkt.clouddn.com/' **必需**</span></span><br><span class="line">    container: <span class="string">"container"</span>, <span class="comment">// 上传区域 DOM ID，默认是 browser_button 的父元素，</span></span><br><span class="line">    max_file_size: <span class="string">"10mb"</span>, <span class="comment">// 最大文件体积限制</span></span><br><span class="line">    flash_swf_url: <span class="string">"../plupload/Moxie.swf"</span>, <span class="comment">//引入 flash,相对路径，这个也可以在 plupload 的文件夹中找到</span></span><br><span class="line">    max_retries: <span class="number">3</span>, <span class="comment">// 上传失败最大重试次数</span></span><br><span class="line">    dragdrop: <span class="literal">true</span>, <span class="comment">// 开启可拖曳上传</span></span><br><span class="line">    drop_element: <span class="string">"photo-container"</span>, <span class="comment">// 拖曳上传区域元素的 ID，拖曳文件或文件夹后可触发上传</span></span><br><span class="line">    chunk_size: <span class="string">"4mb"</span>, <span class="comment">// 分块上传时，每块的体积</span></span><br><span class="line">    auto_start: <span class="literal">true</span>, <span class="comment">// 选择文件后自动上传，若关闭需要自己绑定事件触发上传,</span></span><br><span class="line">    <span class="comment">//x_vars : &#123;</span></span><br><span class="line">    <span class="comment">//    自定义变量，参考http://developer.qiniu.com/docs/v6/api/overview/up/response/vars.html</span></span><br><span class="line">    <span class="comment">//    'time' : function(up,file) &#123;</span></span><br><span class="line">    <span class="comment">//        var time = (new Date()).getTime();</span></span><br><span class="line">    <span class="comment">// do something with 'time'</span></span><br><span class="line">    <span class="comment">//        return time;</span></span><br><span class="line">    <span class="comment">//    &#125;,</span></span><br><span class="line">    <span class="comment">//    'size' : function(up,file) &#123;</span></span><br><span class="line">    <span class="comment">//        var size = file.size;</span></span><br><span class="line">    <span class="comment">// do something with 'size'</span></span><br><span class="line">    <span class="comment">//        return size;</span></span><br><span class="line">    <span class="comment">//    &#125;</span></span><br><span class="line">    <span class="comment">//&#125;,</span></span><br><span class="line">    init: &#123;</span><br><span class="line">        FilesAdded: <span class="function"><span class="keyword">function</span>(<span class="params">up, files</span>) </span>&#123;</span><br><span class="line">            plupload.each(files, <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">                <span class="comment">// 文件添加进队列后,处理相关的事情</span></span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        BeforeUpload: <span class="function"><span class="keyword">function</span>(<span class="params">up, file</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 每个文件上传前,处理相关的事情</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"上传开始"</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        UploadProgress: <span class="function"><span class="keyword">function</span>(<span class="params">up, file</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 每个文件上传时,处理相关的事情</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"上传中"</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        FileUploaded: <span class="function"><span class="keyword">function</span>(<span class="params">up, file, info</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 每个文件上传成功后,处理相关的事情</span></span><br><span class="line">            <span class="comment">// 其中 info.response 是文件上传成功后，服务端返回的json，形式如</span></span><br><span class="line">            <span class="comment">// &#123;</span></span><br><span class="line">            <span class="comment">//    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",</span></span><br><span class="line">            <span class="comment">//    "key": "gogopher.jpg"</span></span><br><span class="line">            <span class="comment">//  &#125;</span></span><br><span class="line">            <span class="comment">// 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> domain = up.getOption(<span class="string">"domain"</span>);</span><br><span class="line">            <span class="keyword">var</span> res = <span class="built_in">JSON</span>.parse(info.response);</span><br><span class="line">            <span class="keyword">var</span> sourceLink = domain + res.key; <span class="comment">//获取上传成功后的文件的Url;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="built_in">Error</span>: <span class="function"><span class="keyword">function</span>(<span class="params">up, err, errTip</span>) </span>&#123;</span><br><span class="line">            base.hideLoading();</span><br><span class="line">            <span class="comment">//上传出错时,处理相关的事情</span></span><br><span class="line">            <span class="keyword">if</span> (file.code == <span class="string">"-600"</span>) &#123;</span><br><span class="line">                base.showAlertDialog(<span class="string">"上传图片的大小不能超过10mb！"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (file.code == <span class="string">"-601"</span>) &#123;</span><br><span class="line">                base.showAlertDialog(<span class="string">"上传图片的格式有误！"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                base.showAlertDialog(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        UploadComplete: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">//队列文件处理完毕后,处理相关的事情</span></span><br><span class="line">        &#125;,</span><br><span class="line">        Key: <span class="function"><span class="keyword">function</span>(<span class="params">up, file</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 若想在前端对每个文件的key进行个性化处理，可以配置该函数</span></span><br><span class="line">            <span class="comment">// 我使用的是图片名加上当前时间来定义key</span></span><br><span class="line">            <span class="comment">// 该配置必须要在 unique_names: false , save_key: false 时才生效</span></span><br><span class="line">            <span class="comment">// do something with key here</span></span><br><span class="line">            <span class="keyword">var</span> timestamp = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">            <span class="keyword">var</span> key = file.name + <span class="string">"/"</span> + timestamp;</span><br><span class="line">            <span class="keyword">return</span> key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// domain 为七牛空间（bucket)对应的域名，选择某个空间后，可通过"空间设置-&gt;基本设置-&gt;域名设置"查看获取</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// uploader 为一个 plupload 对象，继承了所有 plupload 的方法，参考http://plupload.com/docs</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>以上 uploader 的配置适用于单文件上传的情况。相信小伙伴们看完都有一个疑惑，什么是 uptoken 呢？ uptoken 是 我们图片上传的上传凭证，它会根据你的 Access Key 和 Secret Key 还有你上传图片到的存储空间 bucket 来生成(最基本的三项)。那么怎么生成 uptoken 呢？这当然不是由我们前端自己来生成的，这个时候就需要我们后端的小伙伴来帮帮忙了。具体可以参考我的另一篇博客,通过 java 生成七牛云 uptoken。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>关于七牛云上传组件的用法还有很多，如对上传的图片生成水印等，大家可以好好参考一下官方文档。我总结的只是一些最简单的用法，目前我的小 demo 只需要用到这一些，以后有需要再继续拓展 :)</p>
 
       
     </div>
@@ -619,9 +526,7 @@ value = <span class="literal">undefined</span>;
           
             <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
-            <a href="/tags/数据类型/" rel="tag"><i class="fa fa-tag"></i> 数据类型</a>
-          
-            <a href="/tags/undefined/" rel="tag"><i class="fa fa-tag"></i> undefined</a>
+            <a href="/tags/七牛云/" rel="tag"><i class="fa fa-tag"></i> 七牛云</a>
           
         </div>
       
@@ -634,8 +539,8 @@ value = <span class="literal">undefined</span>;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/那些自律到极致的人，都拥有了开挂的人生.html" rel="next" title="那些自律到极致的人，都拥有了开挂的人生">
-                <i class="fa fa-chevron-left"></i> 那些自律到极致的人，都拥有了开挂的人生
+              <a href="/MarkdownStudy.html" rel="next" title="Markdown—文档解读">
+                <i class="fa fa-chevron-left"></i> Markdown—文档解读
               </a>
             
           </div>
@@ -643,6 +548,10 @@ value = <span class="literal">undefined</span>;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/通过Java生成七牛云uptoken.html" rel="prev" title="通过Java生成七牛云uptoken">
+                通过Java生成七牛云uptoken <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -818,7 +727,7 @@ value = <span class="literal">undefined</span>;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Undefined-类型"><span class="nav-number">3.</span> <span class="nav-text">Undefined 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局属性-window-undefined"><span class="nav-number">3.2.</span> <span class="nav-text">全局属性 window.undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部属性-undefined"><span class="nav-number">3.3.</span> <span class="nav-text">局部属性 undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined-判断"><span class="nav-number">3.4.</span> <span class="nav-text">undefined 判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#void-0"><span class="nav-number">3.5.</span> <span class="nav-text">void 0</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Null类型"><span class="nav-number">4.</span> <span class="nav-text">Null类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-null"><span class="nav-number">4.2.</span> <span class="nav-text">typeof null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null-判断"><span class="nav-number">4.3.</span> <span class="nav-text">null 判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null-使用"><span class="nav-number">4.4.</span> <span class="nav-text">null 使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined-与-null"><span class="nav-number">5.</span> <span class="nav-text">undefined 与 null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">7.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方文档"><span class="nav-number">2.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">3.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">5.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">6.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
