@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="七牛云,后端," />
+  <meta name="keywords" content="后端,七牛云," />
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="写在前面最近在写一个图片分享网站类型的小 demo，使用七牛云图片上传需要服务端生成上传凭证 uptoken。本来对后端了解的不是很多，看了官网的说明，写了一个最基本的生成方法，所以总结一下生成 uptoken 的具体步骤。我这里介绍的是使用七牛云 Java SDK 的生成方法。">
-<meta name="keywords" content="七牛云,后端">
+<meta name="keywords" content="后端,七牛云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过Java生成七牛云uptoken">
 <meta property="og:url" content="http://cavszhouyou.top/通过Java生成七牛云uptoken.html">
@@ -385,6 +385,17 @@
 
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/通过Java生成七牛云uptoken.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="通过Java生成七牛云uptoken.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
           
 
           
@@ -523,9 +534,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/七牛云/" rel="tag"><i class="fa fa-tag"></i> 七牛云</a>
-          
             <a href="/tags/后端/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+          
+            <a href="/tags/七牛云/" rel="tag"><i class="fa fa-tag"></i> 七牛云</a>
           
         </div>
       
@@ -581,7 +592,7 @@
 
   
     <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM3MC85OTI2"></div>
+      <div id="SOHUCS"></div>
     </div>
 
   
@@ -948,20 +959,24 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
+
+
+
+
   
-
-
-
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytvG1ES5';
+      var conf = 'f5f0d896bfe8e4692d6e0fc896a8bb21';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
 
 
 

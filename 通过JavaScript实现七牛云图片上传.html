@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="前端,七牛云,JavaScript," />
+  <meta name="keywords" content="前端,JavaScript,七牛云," />
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="写在前面最近在做一个图片分享网站类型的小 demo，我的想法是将用户上传的图片保存到七牛云上，然后将获取的链接存入数据库中。虽然以前写博客一直都是用七牛云来存储配图，但对于如何通过七牛云 JS 的 SDK 来完成上传操作还真是不太了解。在看了官网的教程后，有一些地方不是很明确，查了一些资料，所以总结一下前端如何通过 js 上传图片到七牛云。">
-<meta name="keywords" content="前端,七牛云,JavaScript">
+<meta name="keywords" content="前端,JavaScript,七牛云">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过JavaScript实现七牛云图片上传">
 <meta property="og:url" content="http://cavszhouyou.top/通过JavaScript实现七牛云图片上传.html">
@@ -385,6 +385,17 @@
 
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/通过JavaScript实现七牛云图片上传.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="通过JavaScript实现七牛云图片上传.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
           
 
           
@@ -524,9 +535,9 @@
           
             <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
           
-            <a href="/tags/七牛云/" rel="tag"><i class="fa fa-tag"></i> 七牛云</a>
-          
             <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          
+            <a href="/tags/七牛云/" rel="tag"><i class="fa fa-tag"></i> 七牛云</a>
           
         </div>
       
@@ -582,7 +593,7 @@
 
   
     <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM3MC85OTI2"></div>
+      <div id="SOHUCS"></div>
     </div>
 
   
@@ -949,20 +960,24 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
+
+
+
+
   
-
-
-
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytvG1ES5';
+      var conf = 'f5f0d896bfe8e4692d6e0fc896a8bb21';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
 
 
 
