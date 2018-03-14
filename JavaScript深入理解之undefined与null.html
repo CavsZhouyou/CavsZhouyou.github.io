@@ -97,7 +97,7 @@
 <meta property="og:description" content="写在前面JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu7-1.jpg">
-<meta property="og:updated_time" content="2018-03-11T09:39:11.687Z">
+<meta property="og:updated_time" content="2018-03-14T12:52:08.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript深入理解之undefined与null">
 <meta name="twitter:description" content="写在前面JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。">
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,816字
+                  2,932字
                 </span>
               
 
@@ -448,7 +448,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10分钟
+                  11分钟
                 </span>
               
             </div>
@@ -568,7 +568,7 @@ value = <span class="literal">undefined</span>;
 <ul>
 <li><p>如果定义的变量在将来用于保存对象，那么最好将该变量初始化为null，而不是其他值。换句话说，只要意在保存对象的变量还没有真正保存对象，就应该明确地让该变量保存null值，这样有助于进一步区分null和undefined。</p>
 </li>
-<li><p>当我们使用完一个占用内存比较大的对象时，我们需要对其进行内存释放，我们可以将变量赋值为null，表示该对象不再有任何引用，从而释放内存。 </p>
+<li><p>当一个数据不再需要使用时，我们最好通过将其值设置为null来释放其引用，这个做法叫做解除引用。不过解除一个值的引用并不意味着自动回收改值所占用的内存。解除引用的真正作用是让值脱离执行环境，以便垃圾收集器在下次运行时将其回收。解除引用还有助于消除有可能出现的循环引用的情况。这一做法适用于大多数全局变量和全局对象的属性，局部变量会在它们离开执行环境时(函数执行完时)自动被解除引用。</p>
 </li>
 </ul>
 <h2 id="undefined-与-null"><a href="#undefined-与-null" class="headerlink" title="undefined 与 null"></a>undefined 与 null</h2><p>实际上undefined值是派生自null值的，因此ECMA-262规定对它们的相等性测试要返回true:</p>
@@ -863,7 +863,7 @@ value = <span class="literal">undefined</span>;
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.2k</span>
+    <span title="Site words total count">21.3k</span>
   
 </div>
 
