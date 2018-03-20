@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="前端,JavaScript,数据类型,undefined," />
+  <meta name="keywords" content="前端,JavaScript,Date," />
 
 
 
@@ -88,20 +88,20 @@
 
 
 
-<meta name="description" content="写在前面JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。">
-<meta name="keywords" content="前端,JavaScript,数据类型,undefined">
+<meta name="description" content="写在前面Date 类型平常用得不是很多，但一用到，对它的使用就感到不是很熟悉，每次都是强行百度一波，可以看出自己的基础不是很牢。所以最近决定静下心来好好回顾一下以前自己忽视的基础，下面是我对 Date 类型的一些总结和看法。">
+<meta name="keywords" content="前端,JavaScript,Date">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript深入理解之undefined与null">
-<meta property="og:url" content="http://cavszhouyou.top/JavaScript深入理解之undefined与null.html">
+<meta property="og:title" content="JavaScript深入理解之Date类型详解">
+<meta property="og:url" content="http://cavszhouyou.top/JavaScript深入理解之Date类型详解.html">
 <meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
-<meta property="og:description" content="写在前面JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。">
+<meta property="og:description" content="写在前面Date 类型平常用得不是很多，但一用到，对它的使用就感到不是很熟悉，每次都是强行百度一波，可以看出自己的基础不是很牢。所以最近决定静下心来好好回顾一下以前自己忽视的基础，下面是我对 Date 类型的一些总结和看法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu7-1.jpg">
-<meta property="og:updated_time" content="2018-03-14T13:07:51.696Z">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu9-1.jpg">
+<meta property="og:updated_time" content="2018-03-20T07:02:51.899Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript深入理解之undefined与null">
-<meta name="twitter:description" content="写在前面JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。">
-<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu7-1.jpg">
+<meta name="twitter:title" content="JavaScript深入理解之Date类型详解">
+<meta name="twitter:description" content="写在前面Date 类型平常用得不是很多，但一用到，对它的使用就感到不是很熟悉，每次都是强行百度一波，可以看出自己的基础不是很牢。所以最近决定静下心来好好回顾一下以前自己忽视的基础，下面是我对 Date 类型的一些总结和看法。">
+<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu9-1.jpg">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://cavszhouyou.top/JavaScript深入理解之undefined与null.html"/>
+  <link rel="canonical" href="http://cavszhouyou.top/JavaScript深入理解之Date类型详解.html"/>
 
 
 
 
 
-  <title>JavaScript深入理解之undefined与null | CavsZhouyou's Blog</title>
+  <title>JavaScript深入理解之Date类型详解 | CavsZhouyou's Blog</title>
   
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/JavaScript深入理解之undefined与null.html">
+    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/JavaScript深入理解之Date类型详解.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CavsZhouyou">
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript深入理解之undefined与null</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript深入理解之Date类型详解</h1>
         
 
         <div class="post-meta">
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T10:59:26+08:00">
-                2018-03-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T20:46:05+08:00">
+                2018-03-18
               </time>
             
 
@@ -402,8 +402,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/JavaScript深入理解之undefined与null.html#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="JavaScript深入理解之undefined与null.html" itemprop="commentsCount"></span>
+                <a href="/JavaScript深入理解之Date类型详解.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="JavaScript深入理解之Date类型详解.html" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -432,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,932字
+                  3,596字
                 </span>
               
 
@@ -448,7 +448,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11分钟
+                  13分钟
                 </span>
               
             </div>
@@ -469,117 +469,121 @@
       
 
       
-        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu7-1.jpg" alt="配图7-1"></p>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>JavaScript中有两个特殊的值，undefined与null。平常在写项目时，遇到需要判断一个值是否为空的时候，我总会想到undefined与null。既然都是代表空值(以前我就是这么认为的)，那么它们有没有区别呢？反正我是一直傻傻分不清楚，看了又忘了。最近查阅了一些资料，才发现自己以前真的是误解它们了，知错就改，下面总结一下它们的用法和区别。</p>
+        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu9-1.jpg" alt="JavaScript深入理解之Date类型详解 文章配图"></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>Date 类型平常用得不是很多，但一用到，对它的使用就感到不是很熟悉，每次都是强行百度一波，可以看出自己的基础不是很牢。所以最近决定静下心来好好回顾一下以前自己忽视的基础，下面是我对 Date 类型的一些总结和看法。</p>
 <a id="more"></a>
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>在介绍undefined与null之前，我们先来了解一下ECMAScript中的数据类型。在ECMAScript中有五种简单数据类型(也称为基本数据类型): Undefined、Null、Boolean、Number 和 String 。还有一种复杂数据类型——Object。</p>
-<p>没错，首字母大写的Undefined与Null其实都属于ECMAScript中的基本数据类型。这两个数据类型是五种数据类型中最特殊的两个类型，因为它们都只有唯一的一个值，分别是undefined与null，就是我们今天要介绍的两个主角。</p>
-<h2 id="Undefined-类型"><a href="#Undefined-类型" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>上面我们说过了，Undefined类型只有一个值，就是特殊的undefined，在两种情况下我们会得到undefined：</p>
-<ol>
-<li><p>声明了一个变量，但未对其初始化时，这个变量的值就是undefined。</p>
-<pre><code class="js"><span class="keyword">var</span> data;
-<span class="built_in">console</span>.log(data === <span class="literal">undefined</span>); <span class="comment">//true</span>
-</code></pre>
-<p>那么我么是否可以显式地把一个变量初始化为undefined呢，答案是可以的。</p>
-<pre><code class="js"><span class="keyword">var</span> data = <span class="literal">undefined</span>;
-<span class="built_in">console</span>.log(data === <span class="literal">undefined</span>); <span class="comment">//true</span>
-
-<span class="keyword">var</span> value = <span class="number">1</span>;
-<span class="built_in">console</span>.log(data); <span class="comment">//1</span>
-
-value = <span class="literal">undefined</span>;
-<span class="built_in">console</span>.log(data === <span class="literal">undefined</span>); <span class="comment">// true</span>
-</code></pre>
-<p>一般而言，我们不存在需要显式地把一个变量设置为undefined值的情况，因为对于未经初始化的值默认就会取得undefined值，而已经初始化的值再将其赋值为undefined来表示空值是没有意义且不可取的。况且字面值undefined的主要目的以用于比较，来区分空对象指针(后面我们会介绍到这指的就是null)与未经初始化的变量的情况。</p>
+<h2 id="UTC-和-GMT-及-北京时间的关系"><a href="#UTC-和-GMT-及-北京时间的关系" class="headerlink" title="UTC 和 GMT 及 北京时间的关系"></a>UTC 和 GMT 及 北京时间的关系</h2><p>在介绍Date类型前，我们先来了解一下 UTC 和 GMT 及 北京时间的关系。</p>
+<ul>
+<li><p>GMT 即「格林威治标准时间」(Greenwich Mean Time，简称G.M.T.)，指位于英国伦敦郊区的皇家格林威治天文台的标准时间，因为本初子午线被定义为通过那里的经线。然而由于地球的不规则自转，导致GMT时间有误差，因此目前已不被当作标准时间使用。</p>
 </li>
-<li><p>对未定义的变量执行typeof操作符也会返回undefined</p>
-<pre><code class="js"><span class="comment">//data变量未定义</span>
-<span class="keyword">var</span> value;
-
-<span class="built_in">console</span>.log(<span class="keyword">typeof</span> data); <span class="comment">// "undefined"</span>
-<span class="built_in">console</span>.log(<span class="keyword">typeof</span> value); <span class="comment">// "undefined"</span>
-</code></pre>
-<p>这里我们没有使用<code>===</code>来判断，因为对于尚未声明过的变量，我们只能执行一项操作，即使用typeof操作符检测其数据类型，使用其他的操作都会报错。</p>
-<pre><code class="js"><span class="comment">//data变量未定义</span>
-
-<span class="built_in">console</span>.log(data === <span class="literal">undefined</span>); <span class="comment">//报错</span>
-</code></pre>
-<p>结果表明对未初始化和未声明的变量执行typeof操作符都返回了undefined值，这个结果有其逻辑上的合理性。因为虽然这两种变量从技术角度看有本质区别，但实际上无论对哪种变量也不可能执行真正的操作。</p>
+<li><p>UTC 是最主要的世界时间标准，是经过平均太阳时(以格林威治时间GMT为准)、地轴运动修正后的新时标以及以「秒」为单位的国际原子时所综合精算而成的时间。 UTC 比 GMT 来得更加精准。其误差值必须保持在0.9秒以内，若大于0.9秒则由位于巴黎的国际地球自转事务中央局发布闰秒，使 UTC 与地球自转周期一致。不过日常使用中，GMT 与 UTC 的功能与精确度是没有差别的，我们在文章中提到的 GMT 时间与 UTC 时间是一样的。</p>
 </li>
-</ol>
-<p>还有其他几种情况也会返回undefined，比如一个函数如果没有使用return语句指定返回值，就会返回一个undefined值，或者调用函数时没有传参数值，参数同样也会被初始化为undefined值。这些都是属于上面两种情况在代码中的体现，这里就不单独解释了。 </p>
-<h3 id="全局属性-window-undefined"><a href="#全局属性-window-undefined" class="headerlink" title="全局属性 window.undefined"></a>全局属性 window.undefined</h3><p>从上面的例子我们可以看出，无论我们是否初始化过变量，都可以给变量赋值为undefined。其实这里用于赋值的undefined不是一个值，它是一个属性名，undefined是全局对象的一个属性，也就是说，它是全局作用域的一个变量，即<code>window.undefined</code>，而<code>window.undefined</code>这个属性的值才是前面所说的原始值undefined。<code>data = undefined;</code>这就相当于把一个变量<code>window.undefined</code>的值赋值给另一个变量<code>data</code>，这个值就是原始值undefined。其实在JavaScript代码中,我们看到的undefined大多数情况指的都是<code>window.undefined</code>(本篇文章中多数情况下也是，原始值undefined除外)，原始值undefined多数情况下只存在于文档或规范中,不存在于JavaScript代码中(具体可以理解为代码中参与判断、比较或赋值的都是<code>window.undefined</code>，而在控制台中输出，或函数中返回的则是原始值undefined)。</p>
-<pre><code class="js"><span class="built_in">console</span>.log(<span class="built_in">window</span>.undefined); <span class="comment">//原始值undefined</span>
-</code></pre>
-<p>注意，在ES3之前其实是没有原始值undefined这个值的，第三版引入这个值，其实是为了正式区分空对象指针(后面我们会介绍到这指的就是null)与未经初始化的变量。在ES3中,<code>window.undefined</code>就是一个普通的属性，我们完全可以把它的值改为任何真值。但从ES5之后,<code>window.undefined</code>成了一个不可写,不可配置的数据属性,它的值永远是undefined。</p>
-<h3 id="局部属性-undefined"><a href="#局部属性-undefined" class="headerlink" title="局部属性 undefined"></a>局部属性 undefined</h3><p>大家可能注意到了，上面我提到的是在大多数情况下undefined指的都是<code>window.undefined</code>，那还有什么其他情况吗？其实在ECMAScript中，undefined不是一个保留字，这意味着什么呢？也就是说我们可以将undefined作为一个局部变量来使用，就像局部作用域中任何其他普通变量一样，没有任何特殊性，我们可以对其赋予任何类型的值。</p>
-<pre><code class="js">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="keyword">var</span> <span class="literal">undefined</span> = <span class="string">'not is undefined'</span>;
-    <span class="built_in">console</span>.log(<span class="literal">undefined</span>); <span class="comment">//"not is undefined"</span>
-    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="literal">undefined</span>) <span class="comment">// "string"</span>
-})()
-</code></pre>
-<p>我们可以看到undefined的值和类型都已经改变，这样的做法是非常不友好的，这样会使我们的代码难以维护和排错。</p>
-<h3 id="undefined-判断"><a href="#undefined-判断" class="headerlink" title="undefined 判断"></a>undefined 判断</h3><p>如何判断一个变量是否为undefined，这里有两种方法。</p>
-<ol>
-<li><p>使用严格相等符<code>===</code>或不相等操作符<code>!==</code>来决定一个变量是否拥有值，这里不使用标准相等操作符<code>==</code>,是因为标准相等符还会会检查变量是不是为null，但是严格相等操作符不会检查。null不等同于undefined，这点我们会在后面讲到。</p>
+<li><p>GMT = UTC    </p>
 </li>
-<li><p>使用typeof操作符，这种方式我们在上面已经使用过了，对未定义的变量检测时只能使用这种方式，要不然会出现报错。</p>
+<li><p>因为时区的问题北京时间和UTC时间有这样的关系 <code>UTC + 8 = 北京时间</code> ， 这个公式有助于我们后面理解 Date 类型为什么在不同方法下的转换结果不同。</p>
 </li>
-</ol>
-<h3 id="void-0"><a href="#void-0" class="headerlink" title="void 0"></a>void 0</h3><p>上面我们提到过了，undefined作为局部变量使用是可以被重写的，那么如果我们使用下面这种判断方式，是有风险的。</p>
-<pre><code class="js"><span class="keyword">if</span>(data === <span class="literal">undefined</span>){
-    <span class="comment">//do something</span>
-}
-</code></pre>
-<p>那么我们怎样做才能确保万无一失呢?让我们先来了解一下void运算符,官方文档是这样解释的:</p>
-<blockquote>
-<p>The void operator evaluates the given expression and then returns undefined.</p>
-<p>void 运算符 对给定的表达式进行求值，然后返回 undefined</p>
+</ul>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>ECMAScript 中的 Date 类型是在早期 Java 中的 java.util.Date 类基础上构建的。为此 Date 类型使用自 UTC ( Coordinated Universal Time, 国际协调时间)1970年1月1日午夜(零时)开始经过的毫秒数来保存日期。在使用这种数据存储格式的条件下，Date()类型保存的日期能够精确到1970年1月1日之前或之后的100 000 000年。</p>
 </blockquote>
-<p>什么意思呢？就是使用void对后面的表达式求值，无论结果是多少，都会返回原始值undefined。因此我们可以用<code>void 0</code>来代替undefined进行判断，因为<code>void 0</code>始终返回的都是原始值undefined。</p>
-<pre><code class="js"><span class="keyword">var</span> data;
-<span class="built_in">console</span>.log(data === <span class="keyword">void</span> <span class="number">0</span>); <span class="comment">//true</span>
-</code></pre>
-<h2 id="Null类型"><a href="#Null类型" class="headerlink" title="Null类型"></a>Null类型</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>Null类型是第二个只有一个值的数据类型，这个特殊的值就是null。值 null 是一个字面量，它不像undefined 是全局对象的一个属性。从逻辑角度来看，null值表示一个空对象指针，指示变量未指向任何对象。把 null 作为尚未创建的对象，也许更好理解。在 APIs 中，null 常在返回类型是对象，但没关联值的地方使用，就像下面一个例子。</p>
-<pre><code class="js"><span class="comment">//document.getElementById() 可以返回对拥有指定 ID 的第一个对象的引用</span>
-
-<span class="keyword">var</span> $container = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>); <span class="comment">// 注意:container是不存在的</span>
-
-<span class="built_in">console</span>.log($container); <span class="comment">// null</span>
-</code></pre>
-<h3 id="typeof-null"><a href="#typeof-null" class="headerlink" title="typeof null"></a>typeof null</h3><p>当我们使用typeof操作符检测null值，我们理所应当地认为应该返”Null”类型呀，但是事实返回的类型却是”object”。</p>
-<pre><code class="js"><span class="keyword">var</span> data = <span class="literal">null</span>;
-<span class="built_in">console</span>.log(<span class="keyword">typeof</span> data); <span class="comment">// "object"</span>
-</code></pre>
-<p>是不是很奇怪？其实我们可以从两方面来理解这个结果</p>
+<p>我们可以这样理解，我们创建的一个 Date 对象中保存有一个 value，这个 value 的大小是从 UTC 时间1970年1月1日午夜至指定时间经过的毫秒数的大小。</p>
+<p>这个值其实就是我们经常使用到的时间戳，需要注意的是js内的时间戳指的是指定时间到1970年1月1日00:00:00 UTC对应的毫秒数，和unix时间戳不是一个概念，后者表示秒数，差了1000倍。因此我们在转换时经常会遇到精度丢失的问题(暂时采用这种说法)。</p>
+<h2 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h2><p>要创建一个日期对象，使用 new 操作符和 Date 构造函数即可，如下所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// 获得当前时间</span></span><br></pre></td></tr></table></figure>
+<p>在调用 Date 构造函数而不传递参数的情况下，新创建的对象自动获取当前日期和时间。如果想要根据指定的日期和时间创建对象，必须传入该日期的毫秒数(即从 UTC 时间1970年1月1日午夜至指定时间经过的毫秒数。)听起来是不是有点头大，难道我们还要自己计算好毫秒数才能创建相应的时间对象吗？这样岂不是太麻烦了？</p>
+<h2 id="Date-parse-和-Date-UTC"><a href="#Date-parse-和-Date-UTC" class="headerlink" title="Date.parse() 和 Date.UTC()"></a>Date.parse() 和 Date.UTC()</h2><p>针对上面的问题ECMAScript提供了两个方法 Date.parse() 和 Date.UTC() ,以此来简化这一计算过程。它们会根据我们传入的参数来自动计算出毫秒数的大小。下面我们来分别介绍一下这两个方法。</p>
+<h3 id="Date-parse"><a href="#Date-parse" class="headerlink" title="Date.parse()"></a>Date.parse()</h3><p>Date.parse()方法接受一个表示日期的字符串参数，然后尝试根据这个字符串返回相应的毫秒数，如果传入的字符串不能表示将日期则返回NaN。因为ECMA-262没有定义这个方法应该支持那种日期格式，因此这个方法的行为通常是因地区而异。例如将地区设置为美国的浏览器通常都接受下列日期格式:</p>
 <ul>
-<li><p>一方面从逻辑角度来看，null值表示一个空对象指针，它代表的其实就是一个空对象，所以使用typeof操作符检测时返回”object”也是可以理解的。</p>
+<li>“月/日/年”，如6/13/2004;</li>
+<li>“英文月名日，年”，如January12，2004;</li>
+<li>“英文星期几 英文月名 日 年 时：分：秒 时区”，如Tue May 25 2004 00:00:00 GMT-0700。</li>
+<li>ISO 8601扩展格式YYYY-MM-DDTHH:mm:ss.sssZ（例如2004-05-25T00:00:00）。只有兼容ECMAScript 5的实现支持这种格式。</li>
+</ul>
+<p>例如，要为2004年5月25日创建一个日期对象，可以使用下面的代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(<span class="string">"May 25, 2004"</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="Date-UTC"><a href="#Date-UTC" class="headerlink" title="Date.UTC()"></a>Date.UTC()</h3><p>Date.UTC()方法同样也返回表示日期的毫秒数。但它需要的参数不是字符串，它的参数分别是年份，基于0的月份(0到11)，日(1到31)，小时(0到23)，分钟，秒以及毫秒数。这些参数里边只有前两个参数是必需的，如果没有提供日值，则默认日值为1，其余参数未指定则默认为0。如下面的例子所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//GMT时间2000年1月1日午夜零时： </span></span><br><span class="line"><span class="keyword">var</span> y2k = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2000</span>, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//GMT时间2005年5月5日下午5:55:55： </span></span><br><span class="line"><span class="keyword">var</span> allFives = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2005</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">17</span>, <span class="number">55</span>, <span class="number">55</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><p>UTC 日期指的是在没有时区偏差的情况下(将日期转换为GMT时间)的日期值。 Date.parse() 方法是基于本地时区建立的，而 Date.UTC() 方法是基于无时区偏差建立的。所以如果我们对两个方法传入相同的时间，我们会发现 Date.parse() 方法得到的毫秒数相对于 Date.UTC() 方法得到的毫秒数会多八个小时的毫秒数(这里的本地时区指的是北京时间)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设我们传入相同的时间2018年3月18日</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Date</span>.parse(<span class="string">"3/18/2018"</span>); <span class="comment">// 1521302400000</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Date</span>.UTC(<span class="number">2018</span>,<span class="number">2</span>,<span class="number">18</span>); <span class="comment">//1521331200000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1521302400000 - 1521331200000 = 28800000 = 8 x 60 x 60 x 1000</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>另一方面，其实在JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 null 代表的是空指针（大多数平台下值为 0x00），因此，null的类型标签也成为了 0，typeof null就错误的返回了”object”。在ES6中，当时曾经有提案为历史平凡, 将type null的值纠正为null, 但最后提案被拒了,所以还是保持”object”类型。</p>
+<li><p>如果我们输入的日期值超过了正常的范围，在不同的浏览器中的会有不同的处理方式。例如在解析<code>&quot;January 32，2007&quot;</code>时，有的浏览器会将其解析为<code>&quot;February 1，2007&quot;</code>。而Opera浏览器则倾向于插入当前月份的当前日期值，返回<code>&quot;January 当前日期值，2007&quot;</code>。</p>
+</li>
+<li><p>其实我们没有必要在创建一个 Date 对象的时候显式调用 Date.parse() 和 Date.UTC() 方法，因为将相应的参数传入构造函数后，它会根据参数的类型在后台自动调用Date.parse() 或 Date.UTC() 方法，这样得到日期和时间都是基于本地时区的，就算你存入的参数类型是 Date.UTC() 方法所需的参数类型，最后得到的结果还是基于本地时区的结果。</p>
 </li>
 </ul>
-<h3 id="null-判断"><a href="#null-判断" class="headerlink" title="null 判断"></a>null 判断</h3><p>null的判断可以使用严格相等符<code>===</code>或不相等操作符<code>!==</code>判断，不使用标准相等符的原因是因为undefined会影响判断结果。和undefined不一样，不能使用typeof来判断一个值是否为null，原因上边已经讲了，使用typeof来检测null会返回”object”,这样的话我们是没办法判断的。</p>
-<pre><code class="js"><span class="keyword">if</span>(data === <span class="literal">null</span>){
-    <span class="built_in">console</span>.log(<span class="string">"data中没有保存对象引用！"</span>);
-}
-</code></pre>
-<h3 id="null-使用"><a href="#null-使用" class="headerlink" title="null 使用"></a>null 使用</h3><p>那么我们在什么情况下需要将变量赋值为null呢？这里我想到的有两种情况。</p>
+<h2 id="Date-now"><a href="#Date-now" class="headerlink" title="Date.now()"></a>Date.now()</h2><p>ES5添加了Date.now()方法，用来返回表示调用这个方法时的日期和时间的毫秒数。这个方法可以用来分析函数的运行时间，如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得开始时间</span></span><br><span class="line"><span class="keyword">var</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用函数</span></span><br><span class="line">doSomething();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取结束时间</span></span><br><span class="line"><span class="keyword">var</span> end = <span class="built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 得到函数运行时间</span></span><br><span class="line"><span class="keyword">var</span> runtime = start - end;</span><br></pre></td></tr></table></figure>
+<p>在不支持它的浏览器中，我们可以通过<code>+</code>操作符获取Date对象的时间戳，也可以达到同样的目的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得开始时间</span></span><br><span class="line"><span class="keyword">var</span> start = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用函数</span></span><br><span class="line">doSomething();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取结束时间</span></span><br><span class="line"><span class="keyword">var</span> end = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 得到函数运行时间</span></span><br><span class="line"><span class="keyword">var</span> runtime = start - end;</span><br></pre></td></tr></table></figure>
+<h2 id="继承的方法"><a href="#继承的方法" class="headerlink" title="继承的方法"></a>继承的方法</h2><p>和其他引用类型一样，Date 类型也重写了 toLocaleString() 、toString() 和 valueOf() 方法，但这些方法的返回值与其他类型中的方法不同。</p>
 <ul>
-<li><p>如果定义的变量在将来用于保存对象，那么最好将该变量初始化为null，而不是其他值。换句话说，只要意在保存对象的变量还没有真正保存对象，就应该明确地让该变量保存null值，这样有助于进一步区分null和undefined。</p>
+<li><p>Date 类型的 toLocalString() 方法会按照浏览器设置的时区相适应的格式返回日期和时间。这意味着时间格式中会包含AM和PM，但不会包含时区信息，<strong>具体的格式会因浏览器而异</strong>。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(now.toLocaleString()); <span class="comment">// 2018/3/20 上午10:33:32</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>当一个数据不再需要使用时，我们最好通过将其值设置为null来释放其引用，这个做法叫做解除引用。不过解除一个值的引用并不意味着自动回收改值所占用的内存。解除引用的真正作用是让值脱离执行环境，以便垃圾收集器在下次运行时将其回收。解除引用还有助于消除有可能出现的循环引用的情况。这一做法适用于大多数全局变量和全局对象的属性，局部变量会在它们离开执行环境时(函数执行完时)自动被解除引用。</p>
+<li><p>Date 类型的 toString() 方法会返回带有时区信息的日期和时间，其中时间一般以军用时间(范围0到23)表示。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(now.toString()); <span class="comment">// Tue Mar 20 2018 10:33:32 GMT+0800 (中国标准时间)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Date 类型的 valueOf() 方法会返回日期的毫秒表示，也就是时间戳。因此我们可以使用比较操作符来比较日期。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date1 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2018</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> data2 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2018</span>,<span class="number">3</span>,<span class="number">18</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(data1 &lt; data2); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>在使用比较操作符，会隐式地调用 Date 对象的 valueOf() 方法，然后根据得到的毫秒数来进行比较。</p>
 </li>
 </ul>
-<h2 id="undefined-与-null"><a href="#undefined-与-null" class="headerlink" title="undefined 与 null"></a>undefined 与 null</h2><p>实际上undefined值是派生自null值的，因此ECMA-262规定对它们的相等性测试要返回true:</p>
-<pre><code class="js"><span class="built_in">console</span>.log(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">//true</span>
-</code></pre>
-<p>因为使用的是标准相等符<code>==</code>,这个操作符出于目的会转换其操作数为相同类型后再做比较，如果我们使用严格相等符比较，我们会发现它们是不相等的，因为严格相等符不会进行类型转换，然而undefined与null属于不同的类型，所以不相等。</p>
-<pre><code class="js"><span class="built_in">console</span>.log(<span class="literal">null</span> === <span class="literal">undefined</span>); <span class="comment">//false</span>
-</code></pre>
-<p>尽管null和undefined有这样的关系，但上面我们已经提到过了，它们的用途完全不同，我们在平常使用时一定要学会区分。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>《JavaScript高级程序设计(第三版)》<br> <a href="http://www.css88.com/archives/6236" target="_blank" rel="noopener">JavaScript中undefined和null的区别</a><br> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null" target="_blank" rel="noopener">JavaScript 参考文档 null</a><br> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined" target="_blank" rel="noopener">JavaScript 参考文档 undefined</a><br> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="noopener">JavaScript 参考文档 typeof</a><br> <a href="https://juejin.im/post/591153ceac502e450281e22f" target="_blank" rel="noopener">(void 0) 与 undefined 之间的小九九</a></p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>花了一些时间来总结undefined与null的用法和区别，以前一直没有注意，经过这次总结才发现它们所代表的的意义和用法完全不同。可能在平常使用的时候我们不需要考虑这么多问题，但通过重新看一些东西，总结一些东西，通过这样的方式对我来说收获挺大的。本篇文章纯属个人的学习总结，如果文章中存在错误的地方，希望大家可以向我指出。</p>
+<p>其实在实际应用中，使用 toLocaleString() 和 toString() 来显示日期时间是没有什么价值的，因为它们的返回的日期格式在不同的浏览器里大相径庭，无法得到一致化的显示结果，而且得到的格式对用户的交互效果也不是很友好。</p>
+<h2 id="日期格式化方法"><a href="#日期格式化方法" class="headerlink" title="日期格式化方法"></a>日期格式化方法</h2><p>Date类型还有一些专门用来将日期转化为字符串的方法，不过与 toLocaleString() 和 toString() 的缺点一样，在平常的使用中没有多大价值，所以仅做一下了解就好。</p>
+<ul>
+<li>toDateString()——以特定于实现的格式显示星期几、月、日和年；</li>
+<li>toTimeString()——以特定于实现的格式显示时、分、秒和时区；</li>
+<li>toLocaleDateString()——以特定于地区的格式显示星期几、月、日和年；</li>
+<li>toLocaleTimeString()——以特定于实现的格式显示时、分、秒；</li>
+<li>toUTCString()——以特定于实现的格式完整的UTC日期。</li>
+</ul>
+<h2 id="日期-时间组件方法"><a href="#日期-时间组件方法" class="headerlink" title="日期/时间组件方法"></a>日期/时间组件方法</h2><p>上面我们已经提到了，Date类型本身的字符串格式化方法很鸡肋，在日常使用中用处不大，所以一般我们只有自己编写适用于项目的 format 方法，这时我们一般需要用到获取日期中特定部分的方法。方法有点多，如下:</p>
+<ul>
+<li>getTime()<br>返回表示日期的毫秒数；与valueOf()方法返回的值相同</li>
+<li>setTime(毫秒)<br>以毫秒数设置日期，会改变整个日期</li>
+<li>getFullYear()<br>取得4位数的年份（如2007而非仅07）</li>
+<li>getUTCFullYear()<br>返回UTC日期的4位数年份</li>
+<li>setFullYear(年)<br>设置日期的年份。传入的年份值必须是4位数字（如2007而非仅07）</li>
+<li>setUTCFullYear(年)<br>设置UTC日期的年份。传入的年份值必须是4位数字（如2007而非仅07）</li>
+<li>getMonth()<br>返回日期中的月份，其中0表示一月，11表示十二月</li>
+<li>getUTCMonth()<br>返回UTC日期中的月份，其中0表示一月，11表示十二月</li>
+<li>setMonth(月)<br>设置日期的月份。传入的月份值必须大于0，超过11则增加年份</li>
+<li>setUTCMonth(月)<br>设置UTC日期的月份。传入的月份值必须大于0，超过11则增加年份</li>
+<li>getDate()<br>返回日期月份中的天数（1到31）</li>
+<li>getUTCDate()<br>返回UTC日期月份中的天数（1到31）</li>
+<li>setDate(日)<br>设置日期月份中的天数。如果传入的值超过了该月中应有的天数，则增加月份</li>
+<li>setUTCDate(日)<br>设置UTC日期月份中的天数。如果传入的值超过了该月中应有的天数，则增加月份</li>
+<li>getDay()<br>返回日期中星期的星期几（其中0表示星期日，6表示星期六）</li>
+<li>getUTCDay()<br>返回UTC日期中星期的星期几（其中0表示星期日，6表示星期六）</li>
+<li>getHours()<br>返回日期中的小时数（0到23）</li>
+<li>getUTCHours()<br>返回UTC日期中的小时数（0到23）</li>
+<li>setHours(时)<br>设置日期中的小时数。传入的值超过了23则增加月份中的天数</li>
+<li>setUTCHours(时)<br>设置UTC日期中的小时数。传入的值超过了23则增加月份中的天数</li>
+<li>getMinutes()<br>返回日期中的分钟数（0到59）</li>
+<li>getUTCMinutes()<br>返回UTC日期中的分钟数（0到59）</li>
+<li>setMinutes(分)<br>设置日期中的分钟数。传入的值超过59则增加小时数</li>
+<li>setUTCMinutes(分)<br>设置UTC日期中的分钟数。传入的值超过59则增加小时数</li>
+<li>getSeconds()<br>返回日期中的秒数（0到59）</li>
+<li>getUTCSeconds()<br>返回UTC日期中的秒数（0到59）</li>
+<li>setSeconds(秒)<br>设置日期中的秒数。传入的值超过了59会增加分钟数</li>
+<li>setUTCSeconds(秒)<br>设置UTC日期中的秒数。传入的值超过了59会增加分钟数</li>
+<li>getMilliseconds()<br>返回日期中的毫秒数</li>
+<li>getUTCMilliseconds()<br>返回UTC日期中的毫秒数</li>
+<li>setMilliseconds(毫秒)<br>设置日期中的毫秒数</li>
+<li>setUTCMilliseconds(毫秒)<br>设置UTC日期中的毫秒数</li>
+<li>getTimezoneOffset()<br>返回本地时间与 UTC 时间相差的分钟数。例如，美国东部标准时间返回300。在某地进入夏令时的情况下，这个值会有所变化</li>
+</ul>
+<h2 id="时间戳的获取"><a href="#时间戳的获取" class="headerlink" title="时间戳的获取"></a>时间戳的获取</h2><p>在平时我们需要用到最多的地方还是时间戳的获取，上面我们也提到了不少可以的得到时间戳的方法，下面做一个归纳。</p>
+<ul>
+<li>使用 Date.now() 获取当前时间的毫秒数，只适用于当前时间。</li>
+<li>使用 Date.parse() 获取指定时间的毫秒数，只适用于指定时间。</li>
+<li>使用 Date.UTC() 获取指定时间的毫秒数，只适用于指定时间。</li>
+<li>使用操作符 <code>+</code> 获取Date对象表示日期的毫秒数，都适用取决于Date对象。</li>
+<li>使用 valueOf() 获取Date对象表示日期的毫秒数，都适用取决于Date对象。</li>
+<li>使用 getTime() 获取Date对象表示日期的毫秒数，都适用取决于Date对象。</li>
+</ul>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>花了一些时间将 Date 类型的基础知识，稍微总结了一下。这一块还有很多内容，以后有时间还会对 Date 对象的格式化这个一块进行补充。通过总结发现了很多自己以前习惯性忽略的一些东西。还是希望通过这样的方式，把 JavaScript 这一块的基础打牢一点。不着急慢慢来 :) 本文章纯属于个人的学习总结，如果文章中出现错误，还希望大家能够指出。</p>
 
       
     </div>
@@ -630,9 +634,7 @@ value = <span class="literal">undefined</span>;
           
             <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
-            <a href="/tags/数据类型/" rel="tag"><i class="fa fa-tag"></i> 数据类型</a>
-          
-            <a href="/tags/undefined/" rel="tag"><i class="fa fa-tag"></i> undefined</a>
+            <a href="/tags/Date/" rel="tag"><i class="fa fa-tag"></i> Date</a>
           
         </div>
       
@@ -645,8 +647,8 @@ value = <span class="literal">undefined</span>;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/那些自律到极致的人，都拥有了开挂的人生.html" rel="next" title="那些自律到极致的人，都拥有了开挂的人生">
-                <i class="fa fa-chevron-left"></i> 那些自律到极致的人，都拥有了开挂的人生
+              <a href="/JavaScript深入理解之Array详解.html" rel="next" title="JavaScript深入理解之Array类型详解">
+                <i class="fa fa-chevron-left"></i> JavaScript深入理解之Array类型详解
               </a>
             
           </div>
@@ -654,10 +656,6 @@ value = <span class="literal">undefined</span>;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/JavaScript深入理解之Array详解.html" rel="prev" title="JavaScript深入理解之Array类型详解">
-                JavaScript深入理解之Array类型详解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -833,7 +831,7 @@ value = <span class="literal">undefined</span>;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Undefined-类型"><span class="nav-number">3.</span> <span class="nav-text">Undefined 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局属性-window-undefined"><span class="nav-number">3.2.</span> <span class="nav-text">全局属性 window.undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部属性-undefined"><span class="nav-number">3.3.</span> <span class="nav-text">局部属性 undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined-判断"><span class="nav-number">3.4.</span> <span class="nav-text">undefined 判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#void-0"><span class="nav-number">3.5.</span> <span class="nav-text">void 0</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Null类型"><span class="nav-number">4.</span> <span class="nav-text">Null类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-null"><span class="nav-number">4.2.</span> <span class="nav-text">typeof null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null-判断"><span class="nav-number">4.3.</span> <span class="nav-text">null 判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null-使用"><span class="nav-number">4.4.</span> <span class="nav-text">null 使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined-与-null"><span class="nav-number">5.</span> <span class="nav-text">undefined 与 null</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">7.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTC-和-GMT-及-北京时间的关系"><span class="nav-number">2.</span> <span class="nav-text">UTC 和 GMT 及 北京时间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建方式"><span class="nav-number">4.</span> <span class="nav-text">创建方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-parse-和-Date-UTC"><span class="nav-number">5.</span> <span class="nav-text">Date.parse() 和 Date.UTC()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date-parse"><span class="nav-number">5.1.</span> <span class="nav-text">Date.parse()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date-UTC"><span class="nav-number">5.2.</span> <span class="nav-text">Date.UTC()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">5.3.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-now"><span class="nav-number">6.</span> <span class="nav-text">Date.now()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承的方法"><span class="nav-number">7.</span> <span class="nav-text">继承的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期格式化方法"><span class="nav-number">8.</span> <span class="nav-text">日期格式化方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期-时间组件方法"><span class="nav-number">9.</span> <span class="nav-text">日期/时间组件方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间戳的获取"><span class="nav-number">10.</span> <span class="nav-text">时间戳的获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">11.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
