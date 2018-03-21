@@ -111,10 +111,12 @@
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-15.png">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-16.png">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-17.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-21.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-22.png">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-18.png">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-19.png">
 <meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-20.png">
-<meta property="og:updated_time" content="2018-02-12T08:47:14.369Z">
+<meta property="og:updated_time" content="2018-03-21T09:52:15.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云ECS基于Linux系统部署javaweb项目">
 <meta name="twitter:description" content="写在前面最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。">
@@ -448,7 +450,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,533字
+                  1,712字
                 </span>
               
 
@@ -541,9 +543,17 @@
 <p>如果您想关闭远程连接，恢复 mysql 的默认设置（只能本地连接），只需重复上述步骤，将<code>host=&#39;%&#39;</code>改为<code>host=&#39;localhost&#39;</code>就行了。</p>
 <p>使用 Navicat Premium 来远程连接到数据库，如图:</p>
 <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-17.png" alt="配图5-17"></p>
-<h2 id="上传项目文件到服务器"><a href="#上传项目文件到服务器" class="headerlink" title="上传项目文件到服务器"></a>上传项目文件到服务器</h2><p>上传项目文件到服务器上，我们需要用到 WinSCP,连接配置和其他远程连接需要输入的基本相同，这里就不列举了。我们需要把如下项目文件上传到服务器/data/wwwroot/default/目录下，如图:</p>
+<h2 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h2><p>一般情况下我们不会使用公网 ip 来访问网站，这个时候我们需要为我们的服务器绑定域名，绑定域名后网站需要备案后才能访问，备案的过程可能会有点长，两到三周左右。你如果不想使用域名绑定，那么可以跳过这一小节，不使用域名也是可以的。当我们的网站备案好后，我们需要通过我们绑定的域名在服务器上创建虚拟主机以此来部署我们的项目文件。下面我们来看一下如何创建和删除虚拟主机。</p>
+<p>添加虚拟主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/oneinstack</span><br><span class="line">./vhost.sh</span><br></pre></td></tr></table></figure>
+<p>如图</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-21.png" alt="配图5-21"></p>
+<p>删除虚拟主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd  /root/oneinstack</span><br><span class="line">./vhost.sh del</span><br></pre></td></tr></table></figure>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-22.png" alt="配图5-22"></p>
+<h2 id="上传项目文件到服务器"><a href="#上传项目文件到服务器" class="headerlink" title="上传项目文件到服务器"></a>上传项目文件到服务器</h2><p>上传项目文件到服务器上，我们需要用到 WinSCP,连接配置和其他远程连接需要输入的基本相同，这里就不列举了。我们需要把如下项目文件上传到服务器目录下。如果你创建了虚拟主机，那么你需要上传的服务器目录为<code>/data/wwwroot/你的域名/</code>。如果你未绑定域名，你可以上传到默认的服务器目录下<code>/data/wwwroot/default/</code>，如图:</p>
 <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-18.png" alt="配图5-18"></p>
-<p>这里需要注意的是，这一种方法是通用方法，即你未绑定域名也可使用。我们绑定域名后可以需要创建虚拟主机，然后将项目文件存放到相应的以域名为名的文件夹下。绑定域名后需要备案，要不然是不能访问的。额….最近我还在弄这个备案，等备案好后我会再更新一下这部分内容。</p>
+<p>这里需要注意的是我们需要把 index.html 默认网站首页放在根目录下，要不然会出现403无法访问的错误。</p>
 <p>是不是这样就能访问了呢？我们还需要做最后几步工作。</p>
 <p>默认 Tomcat 是以一般 www 用户运行，所以我们要将网站代码权限改为 www，执行命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R www.www /data/wwwroot</span><br></pre></td></tr></table></figure>
@@ -801,7 +811,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#云服务器-ECS-购买"><span class="nav-number">2.</span> <span class="nav-text">云服务器 ECS 购买</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置安全组"><span class="nav-number">3.</span> <span class="nav-text">配置安全组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数优化"><span class="nav-number">4.</span> <span class="nav-text">参数优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-数据库管理"><span class="nav-number">5.</span> <span class="nav-text">MySQL 数据库管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传项目文件到服务器"><span class="nav-number">6.</span> <span class="nav-text">上传项目文件到服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问主页"><span class="nav-number">7.</span> <span class="nav-text">访问主页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">8.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#云服务器-ECS-购买"><span class="nav-number">2.</span> <span class="nav-text">云服务器 ECS 购买</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置安全组"><span class="nav-number">3.</span> <span class="nav-text">配置安全组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数优化"><span class="nav-number">4.</span> <span class="nav-text">参数优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-数据库管理"><span class="nav-number">5.</span> <span class="nav-text">MySQL 数据库管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟主机"><span class="nav-number">6.</span> <span class="nav-text">虚拟主机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传项目文件到服务器"><span class="nav-number">7.</span> <span class="nav-text">上传项目文件到服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问主页"><span class="nav-number">8.</span> <span class="nav-text">访问主页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">9.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
@@ -835,7 +845,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">29.5k</span>
+    <span title="Site words total count">29.6k</span>
   
 </div>
 
