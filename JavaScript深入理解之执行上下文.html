@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="CavsZhouyou's blog" />
+  <meta name="keywords" content="前端,JavaScript,执行上下文,执行环境," />
 
 
 
@@ -88,16 +88,21 @@
 
 
 
-<meta name="description" content="努力让自己变优秀！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CavsZhouyou&#39;s Blog">
-<meta property="og:url" content="http://cavszhouyou.top/categories/前端/index.html">
+<meta name="description" content="写在前面JavaScript 中的执行上下文（ Execution Context ）相信大家都不陌生，也就是我们常说的执行环境。想要弄懂 JavaScript 代码的执行过程，执行上下文是其中最重要的一个知识点。理解执行上下文有助于我们理解函数作用域链、变量对象和 this 指向等。这两天查阅了很多资料，下面是我对执行上下文的一个理解和总结。">
+<meta name="keywords" content="前端,JavaScript,执行上下文,执行环境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript深入理解之执行上下文">
+<meta property="og:url" content="http://cavszhouyou.top/JavaScript深入理解之执行上下文.html">
 <meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
-<meta property="og:description" content="努力让自己变优秀！">
+<meta property="og:description" content="写在前面JavaScript 中的执行上下文（ Execution Context ）相信大家都不陌生，也就是我们常说的执行环境。想要弄懂 JavaScript 代码的执行过程，执行上下文是其中最重要的一个知识点。理解执行上下文有助于我们理解函数作用域链、变量对象和 this 指向等。这两天查阅了很多资料，下面是我对执行上下文的一个理解和总结。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu11-1.jpg">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu11-2.png">
+<meta property="og:updated_time" content="2018-03-25T12:10:40.106Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CavsZhouyou&#39;s Blog">
-<meta name="twitter:description" content="努力让自己变优秀！">
+<meta name="twitter:title" content="JavaScript深入理解之执行上下文">
+<meta name="twitter:description" content="写在前面JavaScript 中的执行上下文（ Execution Context ）相信大家都不陌生，也就是我们常说的执行环境。想要弄懂 JavaScript 代码的执行过程，执行上下文是其中最重要的一个知识点。理解执行上下文有助于我们理解函数作用域链、变量对象和 this 指向等。这两天查阅了很多资料，下面是我对执行上下文的一个理解和总结。">
+<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu11-1.jpg">
 
 
 
@@ -127,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://cavszhouyou.top/categories/前端/"/>
+  <link rel="canonical" href="http://cavszhouyou.top/JavaScript深入理解之执行上下文.html"/>
 
 
 
 
 
-  <title>分类: 前端 | CavsZhouyou's Blog</title>
+  <title>JavaScript深入理解之执行上下文 | CavsZhouyou's Blog</title>
   
 
 
@@ -162,7 +167,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -310,167 +315,295 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block category">
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/JavaScript深入理解之执行上下文.html">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>前端<small>分类</small>
-        </h1>
-      </div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CavsZhouyou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CavsZhouyou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript深入理解之执行上下文</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T19:34:43+08:00">
+                2018-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/JavaScript深入理解之执行上下文.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="JavaScript深入理解之执行上下文.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,193字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/JavaScript深入理解之执行上下文.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript深入理解之执行上下文</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-24T19:34:43+08:00"
-              content="2018-03-24" >
-          03-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/JavaScript深入理解之RegExp类型.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript深入理解之RegExp类型详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-22T20:21:22+08:00"
-              content="2018-03-22" >
-          03-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/JavaScript深入理解之Date类型详解.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript深入理解之Date类型详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-18T20:46:05+08:00"
-              content="2018-03-18" >
-          03-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/JavaScript深入理解之Array详解.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript深入理解之Array类型详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-16T19:40:12+08:00"
-              content="2018-03-16" >
-          03-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/JavaScript深入理解之undefined与null.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript深入理解之undefined与null</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-10T10:59:26+08:00"
-              content="2018-03-10" >
-          03-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu11-1.jpg" alt="JavaScript深入理解之执行上下文 文章配图"></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>JavaScript 中的执行上下文（ Execution Context ）相信大家都不陌生，也就是我们常说的执行环境。想要弄懂 JavaScript 代码的执行过程，执行上下文是其中最重要的一个知识点。理解执行上下文有助于我们理解函数作用域链、变量对象和 this 指向等。这两天查阅了很多资料，下面是我对执行上下文的一个理解和总结。</p>
+<a id="more"></a>
+<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><p>众所周知 JavaScript 是一种描述型的脚本语言，不同于 C# 或者 java ，它不需要编译成中间语言，而是由 JS 引擎动态的解析和执行。那么 JavaScript 引擎是如何解析和执行一段 JavaScript 代码的呢？让我们先来看一个小例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">test(); <span class="comment">// this is a function!</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"this is a function!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上面我们可以看出，test 函数调用在它的声明之前，按道理应该调用失败才对！而事实是 test 函数能够被正常调用，原因是 test 函数的声明被提升了，使得 test 函数在整个代码执行期间都可以访问到。那声明是什么时候提升的呢？就是在 JavaScript 引擎对代码解析的时候。</p>
+<p>因此我们一定要记住，JavaScript 引擎在执行一段可执行代码之前，会先进行准备工作，也就是对这段代码进行解析（也可以称为预处理）。这个阶段会根据<strong>可执行代码</strong>创建相应的<strong>执行上下文（ Execution Context ）</strong>，也就是做声明提升等工作（后边会详细讲解）。然后在代码解析完成后才开始代码的执行。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>这里我们需要注意的一点是， JavaScript 引擎解析执行代码的过程是一个边执行边解析的过程，解析发生在执行一段可执行代码之前。举个例子，当执行到一个函数的时候，就会先对这个函数进行解析，然后再执行这个函数。</p>
+<h2 id="可执行代码"><a href="#可执行代码" class="headerlink" title="可执行代码"></a>可执行代码</h2><p>上面我们提到了，在代码解析阶段会根据不同的可执行代码创建相应的执行上下文，那么可执行代码有哪些呢？其实可以分为下面三种：</p>
+<ul>
+<li>全局执行代码，在执行所有代码前，解析创建全局执行上下文。</li>
+<li>函数执行代码，执行函数前，解析创建函数执行上下文。</li>
+<li>eval执行代码，运行于当前执行上下文中。</li>
+</ul>
+<h2 id="执行上下文的组成"><a href="#执行上下文的组成" class="headerlink" title="执行上下文的组成"></a>执行上下文的组成</h2><p>执行上下文定义了变量或函数有权访问的其他数据，决定了它们各自的行为。每一个执行上下文都由以下三个属性组成。</p>
+<ul>
+<li><p>变量对象（Variable object，VO）</p>
+</li>
+<li><p>作用域链(Scope chain)</p>
+</li>
+<li><p>this</p>
+</li>
+</ul>
+<h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><p>执行每一段可执行代码时都会对应创建一个执行上下文，那么我们是如何来管理这些执行上下文的呢？JavaScript 引擎创建了执行上下文栈（Execution context stack，ECS）来管理执行上下文。 </p>
+<p>下面我们通过一个例子来看一下执行上下文压栈是如何工作的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"global var"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outerFunc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = <span class="string">"var in outerFunc"</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(b);</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">innerFunc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> c = <span class="string">"var in innerFunc"</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(c);</span><br><span class="line">        foo();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    innerFunc();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">outerFunc();</span><br></pre></td></tr></table></figure>
+<p>代码首先进入Global Execution Context，然后依次进入outerFunc，innerFunc和foo的执行上下文，执行上下文栈就可以表示为：</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu11-2.png" alt="配图11-2"></p>
+<p>JavaScript 开始要解释执行代码的时候，最先遇到的就是全局代码，所以 JavaScript 引擎会先解析创建全局执行上下文，然后将全局执行上下文压栈。然后当执行流进入一个函数时，会先解析创建函数的执行上下文，然后将它的执行上下文压栈。而在函数执行之后，会将其执行上下文弹栈，弹栈后执行上下文中所有的数据都会被销毁，然后把控制权返回给之前的执行上下文。注意，全局执行上下文会一直留在栈底，直到整个应用结束。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>本篇文章只是对执行上下文做一个初步的介绍，为后面讲解执行上下文的三个属性作一个铺垫。先了解创建执行上下文这个过程，然后再去分析过程里边的细节。本片文章纯属于个人的学习总结，如果文章中存在错误或观点不当的地方，也希望大家指出！</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="CavsZhouyou 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="CavsZhouyou 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          
+            <a href="/tags/执行上下文/" rel="tag"><i class="fa fa-tag"></i> 执行上下文</a>
+          
+            <a href="/tags/执行环境/" rel="tag"><i class="fa fa-tag"></i> 执行环境</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/JavaScript深入理解之RegExp类型.html" rel="next" title="JavaScript深入理解之RegExp类型详解">
+                <i class="fa fa-chevron-left"></i> JavaScript深入理解之RegExp类型详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -478,6 +611,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -498,8 +640,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -598,6 +749,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码解析"><span class="nav-number">2.</span> <span class="nav-text">代码解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">2.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可执行代码"><span class="nav-number">3.</span> <span class="nav-text">可执行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文的组成"><span class="nav-number">4.</span> <span class="nav-text">执行上下文的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行上下文栈"><span class="nav-number">5.</span> <span class="nav-text">执行上下文栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">6.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -781,6 +948,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
