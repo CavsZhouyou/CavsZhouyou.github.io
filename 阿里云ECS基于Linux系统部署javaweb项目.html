@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="阿里云," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CavsZhouyou's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="写在前面最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。">
+<meta name="keywords" content="阿里云">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云ECS基于Linux系统部署javaweb项目">
+<meta property="og:url" content="http://cavszhouyou.top/阿里云ECS基于Linux系统部署javaweb项目.html">
+<meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
+<meta property="og:description" content="写在前面最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-1.jpg">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-2.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-3.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-6.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-7.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-8.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-9.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-10.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-11.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-12.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-13.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-14.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-15.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-16.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-17.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-21.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-22.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-18.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-19.png">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-20.png">
+<meta property="og:updated_time" content="2018-04-23T09:13:21.824Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里云ECS基于Linux系统部署javaweb项目">
+<meta name="twitter:description" content="写在前面最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。">
+<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu5-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cavszhouyou.top/阿里云ECS基于Linux系统部署javaweb项目.html"/>
+
+
+
+
+
+  <title>阿里云ECS基于Linux系统部署javaweb项目 | CavsZhouyou's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6174acb72639592cbe3360f5c79e9bf7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title"><img style="width:50px; height:50px;" src="http://p2p4htzmu.bkt.clouddn.com/logo-82x82.png">CavsZhouyou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            照片墙
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/阿里云ECS基于Linux系统部署javaweb项目.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CavsZhouyou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CavsZhouyou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">阿里云ECS基于Linux系统部署javaweb项目</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T13:42:03+08:00">
+                2018-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/阿里云/" itemprop="url" rel="index">
+                    <span itemprop="name">阿里云</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/阿里云ECS基于Linux系统部署javaweb项目.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="阿里云ECS基于Linux系统部署javaweb项目.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,706字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-1.jpg" alt="阿里云ECS基于Linux系统部署javaweb项目文章配图"></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>最近发现阿里云上推出了一个云翼计划，大学生购买 ECS 实例最低只要 9.9 元/月(不是打广告),真的是太实惠了有没有。算一算我还有两年才毕业，这要是不申请一个来试试都不好意思说自己读过大学…本来对服务器这一块不是很了解，正好借此机会学习学习。纯基础教学，带你一步一步了解如何使用 ECS 部署你的 javaweb 项目。</p>
+<a id="more"></a>
+<h2 id="云服务器-ECS-购买"><a href="#云服务器-ECS-购买" class="headerlink" title="云服务器 ECS 购买"></a>云服务器 ECS 购买</h2><p>因为我们需要部署一个 javaweb 项目，所以我们需要在服务器配置相应的 JAVA 环境。当然我们购买最基本的 ECS 实例然后再安装对应的 mysql，tomcat 这些也是可以的。这里我们有一个一步到位的方法，就是选择已经配置好的镜像。大家可以通过在阿里云的云市场里边搜索找到 JAVA 环境（CentOS7.4 Nginx Tomcat8 JDK）这一个镜像，然后点击购买(这一个镜像是免费的)。下面是地址:</p>
+<ul>
+<li><a href="https://market.aliyun.com/products/53400005/cmjj016483.html?spm=a2c4g.11186623.2.8.6yiYw6" target="_blank" rel="noopener">JAVA 环境（CentOS7.4 Nginx Tomcat8 JDK）镜像</a></li>
+</ul>
+<p>如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-2.png" alt="配图5-2"></p>
+<p>点击立即购买，然后进入 ECS 实例的购买配置页面，如果没有特殊需求，按照默认的配置购买即可，大学生的话可以享受 9.9 元/月的优惠，好像买一年还会送域名的代金券。</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-3.png" alt="配图5-3"></p>
+<h2 id="配置安全组"><a href="#配置安全组" class="headerlink" title="配置安全组"></a>配置安全组</h2><p>购买了服务器后我们可以登陆阿里云的管理控制台查看我们购买的 ECS 示例，然后选择安全组，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-6.png" alt="配图5-6"></p>
+<p>配置安全组可以让我们访问以及使用 mysql 远程连接数据库等，点击配置规则，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-7.png" alt="配图5-7"></p>
+<p>点击快速创建规则，先创建第一个规则，一定要和我的一致，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-8.png" alt="配图5-8"></p>
+<p>点击添加安全组规则，创建第二个规则，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-9.png" alt="配图5-9"></p>
+<p>点击添加安全组规则，创建第三个规则，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-10.png" alt="配图5-10"></p>
+<p>我们还要添加一个出方向的规则，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-11.png" alt="配图5-11"></p>
+<p>配置好后我们就可以通过我们的公网 ip 访问我们的服务器了，访问公网 ip 出现如下界面说明我们的安全组配置成功了，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-12.png" alt="配图5-12"></p>
+<h2 id="参数优化"><a href="#参数优化" class="headerlink" title="参数优化"></a>参数优化</h2><p>我们可以通过 Xshell 5 来远程连接到我们的服务器，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-13.png" alt="配图5-13"></p>
+<p>点击确定后需要输入密码，就是在购买实例时设置的密码。</p>
+<p>由于镜像制作是下 1 核 1G 内存配置完成，Nginx、MySQL、JVM 参数还是该配置的参数，如果不是这个配置，我们需要执行下面优化脚本(建议都执行一下)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/oneinstack  //必须进入oneinstack目录下执行</span><br><span class="line">./optimize.sh      //请勿bash ./optimize.sh（或者sh）这样执行</span><br></pre></td></tr></table></figure>
+<p>需要注意:</p>
+<ul>
+<li>可能需要等待 1 分钟，请勿中断</li>
+<li>此脚本会根据系统配置，自动优化 Nginx、MySQL、JVM 等参数</li>
+</ul>
+<p>优化成功，如下图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-14.png" alt="配图5-14"></p>
+<h2 id="MySQL-数据库管理"><a href="#MySQL-数据库管理" class="headerlink" title="MySQL 数据库管理"></a>MySQL 数据库管理</h2><p>由于我们需要部署 javaweb 项目，肯定会使用到数据库。直接使用 cmd 界面管理肯定不方便，所以我们需要使用如 Navicat Premium 这样的工具来远程连接数据库进行操作。不过直接远程连接是不行的，因为我们没有开放权限。</p>
+<p>我们先来看一下数据库默认 root 的密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/oneinstack</span><br><span class="line">grep dbrootpwd options.conf  //显示数据库root密码</span><br></pre></td></tr></table></figure>
+<p>如下图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-15.png" alt="配图5-15"></p>
+<p>默认密码太复杂了，我们想要重置密码怎么办呢？可以这样做</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/oneinstack</span><br><span class="line">./reset_db_root_password.sh</span><br></pre></td></tr></table></figure>
+<p>如下图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-16.png" alt="配图5-16"></p>
+<p>好了，进入正题，如何获取权限远程连接 mysql</p>
+<p>首先登陆，然后打开 mysql 数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -h localhost -p</span><br><span class="line">use mysql                      //打开mysql数据库</span><br></pre></td></tr></table></figure>
+<p>然后将 host 设置为%表示任何 ip 都能连接 mysql，当然您也可以将 host 指定为某个 ip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user set host=&apos;%&apos; where user=&apos;root&apos; and host=&apos;localhost&apos;;</span><br></pre></td></tr></table></figure>
+<p>最后刷新权限表，使配置生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>如果您想关闭远程连接，恢复 mysql 的默认设置（只能本地连接），只需重复上述步骤，将<code>host=&#39;%&#39;</code>改为<code>host=&#39;localhost&#39;</code>就行了。</p>
+<p>使用 Navicat Premium 来远程连接到数据库，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-17.png" alt="配图5-17"></p>
+<h2 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h2><p>一般情况下我们不会使用公网 ip 来访问网站，这个时候我们需要为我们的服务器绑定域名，绑定域名后网站需要备案后才能访问，备案的过程可能会有点长，两到三周左右。你如果不想使用域名绑定，那么可以跳过这一小节，不使用域名也是可以的。当我们的网站备案好后，我们需要通过我们绑定的域名在服务器上创建虚拟主机以此来部署我们的项目文件。下面我们来看一下如何创建和删除虚拟主机。</p>
+<p>添加虚拟主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/oneinstack</span><br><span class="line">./vhost.sh</span><br></pre></td></tr></table></figure>
+<p>如图</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-21.png" alt="配图5-21"></p>
+<p>删除虚拟主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd  /root/oneinstack</span><br><span class="line">./vhost.sh del</span><br></pre></td></tr></table></figure>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-22.png" alt="配图5-22"></p>
+<h2 id="上传项目文件到服务器"><a href="#上传项目文件到服务器" class="headerlink" title="上传项目文件到服务器"></a>上传项目文件到服务器</h2><p>上传项目文件到服务器上，我们需要用到 WinSCP,连接配置和其他远程连接需要输入的基本相同，这里就不列举了。我们需要把如下项目文件上传到服务器目录下。如果你创建了虚拟主机，那么你需要上传的服务器目录为<code>/data/wwwroot/你的域名/</code>。如果你未绑定域名，你可以上传到默认的服务器目录下<code>/data/wwwroot/default/</code>，如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-18.png" alt="配图5-18"></p>
+<p>这里需要注意的是我们需要把 index.html 默认网站首页放在根目录下，要不然会出现403无法访问的错误。</p>
+<p>是不是这样就能访问了呢？我们还需要做最后几步工作。</p>
+<p>默认 Tomcat 是以一般 www 用户运行，所以我们要将网站代码权限改为 www，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R www.www /data/wwwroot</span><br></pre></td></tr></table></figure>
+<p>如图:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-19.png" alt="配图5-19"></p>
+<p>最后，我们重启一下 Tomcat 就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service tomcat restart</span><br></pre></td></tr></table></figure>
+<h2 id="访问主页"><a href="#访问主页" class="headerlink" title="访问主页"></a>访问主页</h2><p>下面我们访问一下我们网站的主页试试，这里要注意网站的根目录是 default 目录，所以我们需要注意一下我们访问的页面的路径。这是我的图片分享网站的首页，大家可以参考一下:</p>
+<p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu5-20.png" alt="配图5-20"></p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>好了，终于将我们的 javaweb 部署到服务器上了。虽然弄了很久…..但还是很高兴，感觉通过部署服务器学到了很多东西，对网站的创建和运行有了一定的了解。</p>
+<p><strong>本篇文章纯属于个人的学习总结，如果文章中出现错误或不严谨的地方，希望大家能够指出，谢谢！</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="CavsZhouyou 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="CavsZhouyou 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/阿里云/" rel="tag"><i class="fa fa-tag"></i> 阿里云</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/从零搭建Spring-SpringMVC-Mybatis.html" rel="next" title="从零搭建Spring+SpringMVC+Mybatis">
+                <i class="fa fa-chevron-left"></i> 从零搭建Spring+SpringMVC+Mybatis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/那些自律到极致的人，都拥有了开挂的人生.html" rel="prev" title="那些自律到极致的人，都拥有了开挂的人生">
+                那些自律到极致的人，都拥有了开挂的人生 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="CavsZhouyou" />
+            
+              <p class="site-author-name" itemprop="name">CavsZhouyou</p>
+              <p class="site-description motion-element" itemprop="description">努力让自己变优秀！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/CavsZhouyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zhouyou.world@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/CavsZhouyou" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/15550671537" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#云服务器-ECS-购买"><span class="nav-number">2.</span> <span class="nav-text">云服务器 ECS 购买</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置安全组"><span class="nav-number">3.</span> <span class="nav-text">配置安全组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数优化"><span class="nav-number">4.</span> <span class="nav-text">参数优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-数据库管理"><span class="nav-number">5.</span> <span class="nav-text">MySQL 数据库管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟主机"><span class="nav-number">6.</span> <span class="nav-text">虚拟主机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传项目文件到服务器"><span class="nav-number">7.</span> <span class="nav-text">上传项目文件到服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问主页"><span class="nav-number">8.</span> <span class="nav-text">访问主页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">9.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CavsZhouyou</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">41.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytvG1ES5';
+      var conf = 'f5f0d896bfe8e4692d6e0fc896a8bb21';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
