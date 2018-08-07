@@ -55,9 +55,9 @@
       <tags>
         <tag>前端</tag>
         <tag>JavaScript</tag>
+        <tag>对象创建</tag>
         <tag>构造函数</tag>
         <tag>new</tag>
-        <tag>对象创建</tag>
       </tags>
   </entry>
   <entry>
@@ -71,8 +71,8 @@
       <tags>
         <tag>前端</tag>
         <tag>JavaScript</tag>
-        <tag>原型</tag>
         <tag>原型链</tag>
+        <tag>原型</tag>
       </tags>
   </entry>
   <entry>
@@ -86,10 +86,10 @@
       <tags>
         <tag>前端</tag>
         <tag>JavaScript</tag>
-        <tag>原型链</tag>
-        <tag>引用类型</tag>
         <tag>构造函数</tag>
         <tag>new</tag>
+        <tag>引用类型</tag>
+        <tag>原型链</tag>
       </tags>
   </entry>
   <entry>
@@ -287,8 +287,8 @@
         <category>七牛云</category>
       </categories>
       <tags>
-        <tag>七牛云</tag>
         <tag>后端</tag>
+        <tag>七牛云</tag>
       </tags>
   </entry>
   <entry>
