@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,JavaScript,Date," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CavsZhouyou's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="写在前面Date 类型平常用得不是很多，但一用到，对它的使用就感到不是很熟悉，每次都是强行百度一波，可以看出自己的基础不是很牢。所以最近决定静下心来好好回顾一下以前自己忽视的基础，下面是我对 Date 类型的一些总结和看法。">
+<meta name="keywords" content="前端,JavaScript,Date">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript深入理解之Date类型详解">
+<meta property="og:url" content="http://cavszhouyou.top/JavaScript深入理解之Date类型详解.html">
+<meta property="og:site_name" content="CavsZhouyou&#39;s Blog">
+<meta property="og:description" content="写在前面Date 类型平常用得不是很多，但一用到，对它的使用就感到不是很熟悉，每次都是强行百度一波，可以看出自己的基础不是很牢。所以最近决定静下心来好好回顾一下以前自己忽视的基础，下面是我对 Date 类型的一些总结和看法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu9-1.jpg">
+<meta property="og:updated_time" content="2018-04-23T09:10:43.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript深入理解之Date类型详解">
+<meta name="twitter:description" content="写在前面Date 类型平常用得不是很多，但一用到，对它的使用就感到不是很熟悉，每次都是强行百度一波，可以看出自己的基础不是很牢。所以最近决定静下心来好好回顾一下以前自己忽视的基础，下面是我对 Date 类型的一些总结和看法。">
+<meta name="twitter:image" content="http://p2p4htzmu.bkt.clouddn.com/peitu9-1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cavszhouyou.top/JavaScript深入理解之Date类型详解.html"/>
+
+
+
+
+
+  <title>JavaScript深入理解之Date类型详解 | CavsZhouyou's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6174acb72639592cbe3360f5c79e9bf7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title"><img style="width:50px; height:50px;" src="http://p2p4htzmu.bkt.clouddn.com/logo-82x82.png">CavsZhouyou's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            照片墙
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cavszhouyou.top/JavaScript深入理解之Date类型详解.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CavsZhouyou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CavsZhouyou's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript深入理解之Date类型详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T20:46:05+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/JavaScript深入理解之Date类型详解.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="JavaScript深入理解之Date类型详解.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,605字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://p2p4htzmu.bkt.clouddn.com/peitu9-1.jpg" alt="JavaScript深入理解之Date类型详解 文章配图"></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>Date 类型平常用得不是很多，但一用到，对它的使用就感到不是很熟悉，每次都是强行百度一波，可以看出自己的基础不是很牢。所以最近决定静下心来好好回顾一下以前自己忽视的基础，下面是我对 Date 类型的一些总结和看法。</p>
+<a id="more"></a>
+<h2 id="UTC-和-GMT-及-北京时间的关系"><a href="#UTC-和-GMT-及-北京时间的关系" class="headerlink" title="UTC 和 GMT 及 北京时间的关系"></a>UTC 和 GMT 及 北京时间的关系</h2><p>在介绍Date类型前，我们先来了解一下 UTC 和 GMT 及 北京时间的关系。</p>
+<ul>
+<li><p>GMT 即「格林威治标准时间」(Greenwich Mean Time，简称G.M.T.)，指位于英国伦敦郊区的皇家格林威治天文台的标准时间，因为本初子午线被定义为通过那里的经线。然而由于地球的不规则自转，导致GMT时间有误差，因此目前已不被当作标准时间使用。</p>
+</li>
+<li><p>UTC 是最主要的世界时间标准，是经过平均太阳时(以格林威治时间GMT为准)、地轴运动修正后的新时标以及以「秒」为单位的国际原子时所综合精算而成的时间。 UTC 比 GMT 来得更加精准。其误差值必须保持在0.9秒以内，若大于0.9秒则由位于巴黎的国际地球自转事务中央局发布闰秒，使 UTC 与地球自转周期一致。不过日常使用中，GMT 与 UTC 的功能与精确度是没有差别的，我们在文章中提到的 GMT 时间与 UTC 时间是一样的。</p>
+</li>
+<li><p>GMT = UTC    </p>
+</li>
+<li><p>因为时区的问题北京时间和UTC时间有这样的关系 <code>UTC + 8 = 北京时间</code> ， 这个公式有助于我们后面理解 Date 类型为什么在不同方法下的转换结果不同。</p>
+</li>
+</ul>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>ECMAScript 中的 Date 类型是在早期 Java 中的 java.util.Date 类基础上构建的。为此 Date 类型使用自 UTC ( Coordinated Universal Time, 国际协调时间)1970年1月1日午夜(零时)开始经过的毫秒数来保存日期。在使用这种数据存储格式的条件下，Date()类型保存的日期能够精确到1970年1月1日之前或之后的100 000 000年。</p>
+</blockquote>
+<p>我们可以这样理解，我们创建的一个 Date 对象中保存有一个 value，这个 value 的大小是从 UTC 时间1970年1月1日午夜至指定时间经过的毫秒数的大小。</p>
+<p>这个值其实就是我们经常使用到的时间戳，需要注意的是js内的时间戳指的是指定时间到1970年1月1日00:00:00 UTC对应的毫秒数，和unix时间戳不是一个概念，后者表示秒数，差了1000倍。因此我们在转换时经常会遇到精度丢失的问题(暂时采用这种说法)。</p>
+<h2 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h2><p>要创建一个日期对象，使用 new 操作符和 Date 构造函数即可，如下所示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// 获得当前时间</span></span><br></pre></td></tr></table></figure>
+<p>在调用 Date 构造函数而不传递参数的情况下，新创建的对象自动获取当前日期和时间。如果想要根据指定的日期和时间创建对象，必须传入该日期的毫秒数(即从 UTC 时间1970年1月1日午夜至指定时间经过的毫秒数。)听起来是不是有点头大，难道我们还要自己计算好毫秒数才能创建相应的时间对象吗？这样岂不是太麻烦了？</p>
+<h2 id="Date-parse-和-Date-UTC"><a href="#Date-parse-和-Date-UTC" class="headerlink" title="Date.parse() 和 Date.UTC()"></a>Date.parse() 和 Date.UTC()</h2><p>针对上面的问题ECMAScript提供了两个方法 Date.parse() 和 Date.UTC() ,以此来简化这一计算过程。它们会根据我们传入的参数来自动计算出毫秒数的大小。下面我们来分别介绍一下这两个方法。</p>
+<h3 id="Date-parse"><a href="#Date-parse" class="headerlink" title="Date.parse()"></a>Date.parse()</h3><p>Date.parse()方法接受一个表示日期的字符串参数，然后尝试根据这个字符串返回相应的毫秒数，如果传入的字符串不能表示将日期则返回NaN。因为ECMA-262没有定义这个方法应该支持那种日期格式，因此这个方法的行为通常是因地区而异。例如将地区设置为美国的浏览器通常都接受下列日期格式:</p>
+<ul>
+<li>“月/日/年”，如6/13/2004;</li>
+<li>“英文月名日，年”，如January12，2004;</li>
+<li>“英文星期几 英文月名 日 年 时：分：秒 时区”，如Tue May 25 2004 00:00:00 GMT-0700。</li>
+<li>ISO 8601扩展格式YYYY-MM-DDTHH:mm:ss.sssZ（例如2004-05-25T00:00:00）。只有兼容ECMAScript 5的实现支持这种格式。</li>
+</ul>
+<p>例如，要为2004年5月25日创建一个日期对象，可以使用下面的代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(<span class="string">"May 25, 2004"</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="Date-UTC"><a href="#Date-UTC" class="headerlink" title="Date.UTC()"></a>Date.UTC()</h3><p>Date.UTC()方法同样也返回表示日期的毫秒数。但它需要的参数不是字符串，它的参数分别是年份，基于0的月份(0到11)，日(1到31)，小时(0到23)，分钟，秒以及毫秒数。这些参数里边只有前两个参数是必需的，如果没有提供日值，则默认日值为1，其余参数未指定则默认为0。如下面的例子所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//GMT时间2000年1月1日午夜零时： </span></span><br><span class="line"><span class="keyword">var</span> y2k = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2000</span>, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//GMT时间2005年5月5日下午5:55:55： </span></span><br><span class="line"><span class="keyword">var</span> allFives = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2005</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">17</span>, <span class="number">55</span>, <span class="number">55</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><p>UTC 日期指的是在没有时区偏差的情况下(将日期转换为GMT时间)的日期值。 Date.parse() 方法是基于本地时区建立的，而 Date.UTC() 方法是基于无时区偏差建立的。所以如果我们对两个方法传入相同的时间，我们会发现 Date.parse() 方法得到的毫秒数相对于 Date.UTC() 方法得到的毫秒数会多八个小时的毫秒数(这里的本地时区指的是北京时间)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设我们传入相同的时间2018年3月18日</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Date</span>.parse(<span class="string">"3/18/2018"</span>); <span class="comment">// 1521302400000</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Date</span>.UTC(<span class="number">2018</span>,<span class="number">2</span>,<span class="number">18</span>); <span class="comment">//1521331200000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1521302400000 - 1521331200000 = 28800000 = 8 x 60 x 60 x 1000</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果我们输入的日期值超过了正常的范围，在不同的浏览器中的会有不同的处理方式。例如在解析<code>&quot;January 32，2007&quot;</code>时，有的浏览器会将其解析为<code>&quot;February 1，2007&quot;</code>。而Opera浏览器则倾向于插入当前月份的当前日期值，返回<code>&quot;January 当前日期值，2007&quot;</code>。</p>
+</li>
+<li><p>其实我们没有必要在创建一个 Date 对象的时候显式调用 Date.parse() 和 Date.UTC() 方法，因为将相应的参数传入构造函数后，它会根据参数的类型在后台自动调用Date.parse() 或 Date.UTC() 方法，这样得到日期和时间都是基于本地时区的，就算你存入的参数类型是 Date.UTC() 方法所需的参数类型，最后得到的结果还是基于本地时区的结果。</p>
+</li>
+</ul>
+<h2 id="Date-now"><a href="#Date-now" class="headerlink" title="Date.now()"></a>Date.now()</h2><p>ES5添加了Date.now()方法，用来返回表示调用这个方法时的日期和时间的毫秒数。这个方法可以用来分析函数的运行时间，如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得开始时间</span></span><br><span class="line"><span class="keyword">var</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用函数</span></span><br><span class="line">doSomething();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取结束时间</span></span><br><span class="line"><span class="keyword">var</span> end = <span class="built_in">Date</span>.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 得到函数运行时间</span></span><br><span class="line"><span class="keyword">var</span> runtime = start - end;</span><br></pre></td></tr></table></figure>
+<p>在不支持它的浏览器中，我们可以通过<code>+</code>操作符获取Date对象的时间戳，也可以达到同样的目的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 取得开始时间</span></span><br><span class="line"><span class="keyword">var</span> start = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用函数</span></span><br><span class="line">doSomething();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取结束时间</span></span><br><span class="line"><span class="keyword">var</span> end = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 得到函数运行时间</span></span><br><span class="line"><span class="keyword">var</span> runtime = start - end;</span><br></pre></td></tr></table></figure>
+<h2 id="继承的方法"><a href="#继承的方法" class="headerlink" title="继承的方法"></a>继承的方法</h2><p>和其他引用类型一样，Date 类型也重写了 toLocaleString() 、toString() 和 valueOf() 方法，但这些方法的返回值与其他类型中的方法不同。</p>
+<ul>
+<li><p>Date 类型的 toLocalString() 方法会按照浏览器设置的时区相适应的格式返回日期和时间。这意味着时间格式中会包含AM和PM，但不会包含时区信息，<strong>具体的格式会因浏览器而异</strong>。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(now.toLocaleString()); <span class="comment">// 2018/3/20 上午10:33:32</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Date 类型的 toString() 方法会返回带有时区信息的日期和时间，其中时间一般以军用时间(范围0到23)表示。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(now.toString()); <span class="comment">// Tue Mar 20 2018 10:33:32 GMT+0800 (中国标准时间)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Date 类型的 valueOf() 方法会返回日期的毫秒表示，也就是时间戳。因此我们可以使用比较操作符来比较日期。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> date1 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2018</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> data2 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2018</span>,<span class="number">3</span>,<span class="number">18</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(data1 &lt; data2); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>在使用比较操作符，会隐式地调用 Date 对象的 valueOf() 方法，然后根据得到的毫秒数来进行比较。</p>
+</li>
+</ul>
+<p>其实在实际应用中，使用 toLocaleString() 和 toString() 来显示日期时间是没有什么价值的，因为它们的返回的日期格式在不同的浏览器里大相径庭，无法得到一致化的显示结果，而且得到的格式对用户的交互效果也不是很友好。</p>
+<h2 id="日期格式化方法"><a href="#日期格式化方法" class="headerlink" title="日期格式化方法"></a>日期格式化方法</h2><p>Date类型还有一些专门用来将日期转化为字符串的方法，不过与 toLocaleString() 和 toString() 的缺点一样，在平常的使用中没有多大价值，所以仅做一下了解就好。</p>
+<ul>
+<li>toDateString()——以特定于实现的格式显示星期几、月、日和年；</li>
+<li>toTimeString()——以特定于实现的格式显示时、分、秒和时区；</li>
+<li>toLocaleDateString()——以特定于地区的格式显示星期几、月、日和年；</li>
+<li>toLocaleTimeString()——以特定于实现的格式显示时、分、秒；</li>
+<li>toUTCString()——以特定于实现的格式完整的UTC日期。</li>
+</ul>
+<h2 id="日期-时间组件方法"><a href="#日期-时间组件方法" class="headerlink" title="日期/时间组件方法"></a>日期/时间组件方法</h2><p>上面我们已经提到了，Date类型本身的字符串格式化方法很鸡肋，在日常使用中用处不大，所以一般我们只有自己编写适用于项目的 format 方法，这时我们一般需要用到获取日期中特定部分的方法。方法有点多，如下:</p>
+<ul>
+<li>getTime()<br>返回表示日期的毫秒数；与valueOf()方法返回的值相同</li>
+<li>setTime(毫秒)<br>以毫秒数设置日期，会改变整个日期</li>
+<li>getFullYear()<br>取得4位数的年份（如2007而非仅07）</li>
+<li>getUTCFullYear()<br>返回UTC日期的4位数年份</li>
+<li>setFullYear(年)<br>设置日期的年份。传入的年份值必须是4位数字（如2007而非仅07）</li>
+<li>setUTCFullYear(年)<br>设置UTC日期的年份。传入的年份值必须是4位数字（如2007而非仅07）</li>
+<li>getMonth()<br>返回日期中的月份，其中0表示一月，11表示十二月</li>
+<li>getUTCMonth()<br>返回UTC日期中的月份，其中0表示一月，11表示十二月</li>
+<li>setMonth(月)<br>设置日期的月份。传入的月份值必须大于0，超过11则增加年份</li>
+<li>setUTCMonth(月)<br>设置UTC日期的月份。传入的月份值必须大于0，超过11则增加年份</li>
+<li>getDate()<br>返回日期月份中的天数（1到31）</li>
+<li>getUTCDate()<br>返回UTC日期月份中的天数（1到31）</li>
+<li>setDate(日)<br>设置日期月份中的天数。如果传入的值超过了该月中应有的天数，则增加月份</li>
+<li>setUTCDate(日)<br>设置UTC日期月份中的天数。如果传入的值超过了该月中应有的天数，则增加月份</li>
+<li>getDay()<br>返回日期中星期的星期几（其中0表示星期日，6表示星期六）</li>
+<li>getUTCDay()<br>返回UTC日期中星期的星期几（其中0表示星期日，6表示星期六）</li>
+<li>getHours()<br>返回日期中的小时数（0到23）</li>
+<li>getUTCHours()<br>返回UTC日期中的小时数（0到23）</li>
+<li>setHours(时)<br>设置日期中的小时数。传入的值超过了23则增加月份中的天数</li>
+<li>setUTCHours(时)<br>设置UTC日期中的小时数。传入的值超过了23则增加月份中的天数</li>
+<li>getMinutes()<br>返回日期中的分钟数（0到59）</li>
+<li>getUTCMinutes()<br>返回UTC日期中的分钟数（0到59）</li>
+<li>setMinutes(分)<br>设置日期中的分钟数。传入的值超过59则增加小时数</li>
+<li>setUTCMinutes(分)<br>设置UTC日期中的分钟数。传入的值超过59则增加小时数</li>
+<li>getSeconds()<br>返回日期中的秒数（0到59）</li>
+<li>getUTCSeconds()<br>返回UTC日期中的秒数（0到59）</li>
+<li>setSeconds(秒)<br>设置日期中的秒数。传入的值超过了59会增加分钟数</li>
+<li>setUTCSeconds(秒)<br>设置UTC日期中的秒数。传入的值超过了59会增加分钟数</li>
+<li>getMilliseconds()<br>返回日期中的毫秒数</li>
+<li>getUTCMilliseconds()<br>返回UTC日期中的毫秒数</li>
+<li>setMilliseconds(毫秒)<br>设置日期中的毫秒数</li>
+<li>setUTCMilliseconds(毫秒)<br>设置UTC日期中的毫秒数</li>
+<li>getTimezoneOffset()<br>返回本地时间与 UTC 时间相差的分钟数。例如，美国东部标准时间返回300。在某地进入夏令时的情况下，这个值会有所变化</li>
+</ul>
+<h2 id="时间戳的获取"><a href="#时间戳的获取" class="headerlink" title="时间戳的获取"></a>时间戳的获取</h2><p>在平时我们需要用到最多的地方还是时间戳的获取，上面我们也提到了不少可以的得到时间戳的方法，下面做一个归纳。</p>
+<ul>
+<li>使用 Date.now() 获取当前时间的毫秒数，只适用于当前时间。</li>
+<li>使用 Date.parse() 获取指定时间的毫秒数，只适用于指定时间。</li>
+<li>使用 Date.UTC() 获取指定时间的毫秒数，只适用于指定时间。</li>
+<li>使用操作符 <code>+</code> 获取Date对象表示日期的毫秒数，都适用取决于Date对象。</li>
+<li>使用 valueOf() 获取Date对象表示日期的毫秒数，都适用取决于Date对象。</li>
+<li>使用 getTime() 获取Date对象表示日期的毫秒数，都适用取决于Date对象。</li>
+</ul>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>花了一些时间将 Date 类型的基础知识，稍微总结了一下。这一块还有很多内容，以后有时间还会对 Date 对象的格式化这个一块进行补充。通过总结发现了很多自己以前习惯性忽略的一些东西。还是希望通过这样的方式，把 JavaScript 这一块的基础打牢一点。不着急慢慢来 :)</p>
+<p><strong>本篇文章纯属于个人的学习总结，如果文章中出现错误或不严谨的地方，希望大家能够指出，谢谢！</strong> </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="CavsZhouyou 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="CavsZhouyou 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          
+            <a href="/tags/Date/" rel="tag"><i class="fa fa-tag"></i> Date</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/JavaScript深入理解之Array详解.html" rel="next" title="JavaScript深入理解之Array类型详解">
+                <i class="fa fa-chevron-left"></i> JavaScript深入理解之Array类型详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/JavaScript深入理解之RegExp类型.html" rel="prev" title="JavaScript深入理解之RegExp类型详解">
+                JavaScript深入理解之RegExp类型详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="CavsZhouyou" />
+            
+              <p class="site-author-name" itemprop="name">CavsZhouyou</p>
+              <p class="site-description motion-element" itemprop="description">努力让自己变优秀！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/CavsZhouyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zhouyou.world@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/CavsZhouyou" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/15550671537" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTC-和-GMT-及-北京时间的关系"><span class="nav-number">2.</span> <span class="nav-text">UTC 和 GMT 及 北京时间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建方式"><span class="nav-number">4.</span> <span class="nav-text">创建方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-parse-和-Date-UTC"><span class="nav-number">5.</span> <span class="nav-text">Date.parse() 和 Date.UTC()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date-parse"><span class="nav-number">5.1.</span> <span class="nav-text">Date.parse()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date-UTC"><span class="nav-number">5.2.</span> <span class="nav-text">Date.UTC()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">5.3.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-now"><span class="nav-number">6.</span> <span class="nav-text">Date.now()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承的方法"><span class="nav-number">7.</span> <span class="nav-text">继承的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期格式化方法"><span class="nav-number">8.</span> <span class="nav-text">日期格式化方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期-时间组件方法"><span class="nav-number">9.</span> <span class="nav-text">日期/时间组件方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间戳的获取"><span class="nav-number">10.</span> <span class="nav-text">时间戳的获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">11.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CavsZhouyou</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">56.1k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytvG1ES5';
+      var conf = 'f5f0d896bfe8e4692d6e0fc896a8bb21';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
