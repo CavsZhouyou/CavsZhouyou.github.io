@@ -149,11 +149,11 @@
          
         <tag>JavaScript</tag>
          
+        <tag>对象创建</tag>
+         
         <tag>构造函数</tag>
          
         <tag>new</tag>
-         
-        <tag>对象创建</tag>
          
          
            
@@ -209,13 +209,13 @@
          
         <tag>JavaScript</tag>
          
-        <tag>原型链</tag>
-         
-        <tag>引用类型</tag>
-         
         <tag>构造函数</tag>
          
         <tag>new</tag>
+         
+        <tag>原型链</tag>
+         
+        <tag>引用类型</tag>
          
          
            
@@ -445,9 +445,9 @@
          
         <tag>JavaScript</tag>
          
-        <tag>变量对象</tag>
-         
         <tag>执行上下文</tag>
+         
+        <tag>变量对象</tag>
          
          
            
@@ -474,11 +474,11 @@
          
         <tag>JavaScript</tag>
          
+        <tag>执行上下文</tag>
+         
         <tag>作用域链</tag>
          
         <tag>变量对象</tag>
-         
-        <tag>执行上下文</tag>
          
          
            
