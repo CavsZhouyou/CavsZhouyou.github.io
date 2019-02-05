@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="前端,JavaScript,原型,原型链," />
+  <meta name="keywords" content="前端,JavaScript,原型链,原型," />
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="写在前面原型和原型链一直都是 JavaScript 中很重要的概念，理解它们有助于我们理解预定义引用类型间的关系以及 JavaScript 中对象继承的实现机制，下面是我对原型和原型链的理解和总结。">
-<meta name="keywords" content="前端,JavaScript,原型,原型链">
+<meta name="keywords" content="前端,JavaScript,原型链,原型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript深入理解之原型与原型链">
 <meta property="og:url" content="http://cavszhouyou.top/JavaScript深入理解之原型与原型链.html">
@@ -102,7 +102,9 @@
 <meta property="og:image" content="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-5.png">
 <meta property="og:image" content="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-7.png">
 <meta property="og:image" content="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-8.png">
-<meta property="og:updated_time" content="2018-11-21T15:43:24.865Z">
+<meta property="og:image" content="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-9.png">
+<meta property="og:image" content="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-10.png">
+<meta property="og:updated_time" content="2019-02-05T10:45:42.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript深入理解之原型与原型链">
 <meta name="twitter:description" content="写在前面原型和原型链一直都是 JavaScript 中很重要的概念，理解它们有助于我们理解预定义引用类型间的关系以及 JavaScript 中对象继承的实现机制，下面是我对原型和原型链的理解和总结。">
@@ -447,7 +449,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,925字
+                  2,179字
                 </span>
               
 
@@ -463,7 +465,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7分钟
+                  8分钟
                 </span>
               
             </div>
@@ -487,16 +489,16 @@
         <p><img src="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-1.jpg" alt="JavaScript深入理解之原型与原型链文章配图"></p>
 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>原型和原型链一直都是 JavaScript 中很重要的概念，理解它们有助于我们理解预定义引用类型间的关系以及 JavaScript 中对象继承的实现机制，下面是我对原型和原型链的理解和总结。</p>
 <a id="more"></a>
-<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><h3 id="原型对象理解"><a href="#原型对象理解" class="headerlink" title="原型对象理解"></a>原型对象理解</h3><h4 id="prototype-属性"><a href="#prototype-属性" class="headerlink" title="prototype 属性"></a>prototype 属性</h4><p>我们创建的每一个函数都有一个 prototype 属性，这个属性是一个指针，指向一个对象。这个对象就是函数的原型对象，而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。</p>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><h3 id="原型对象理解"><a href="#原型对象理解" class="headerlink" title="原型对象理解"></a>原型对象理解</h3><h4 id="函数对象的-prototype-属性"><a href="#函数对象的-prototype-属性" class="headerlink" title="函数对象的 prototype 属性"></a>函数对象的 prototype 属性</h4><p>我们创建的每一个函数都有一个 prototype 属性，这个属性是一个指针，指向一个对象。这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法，简单来说，该函数实例化的所有对象的__proto__的属性指向这个对象，它是该函数所有实例化对象的原型。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为原型对象添加方法</span></span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因为函数也是对象，下面我们来看一下函数对象和它的原型对象之间的关系。</p>
+<p>下面我们来看一下它们之间的关系。</p>
 <p><img src="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-2.png" alt="配图18-2"></p>
-<h4 id="constructor-属性"><a href="#constructor-属性" class="headerlink" title="constructor 属性"></a>constructor 属性</h4><p>当函数创建，prototype 属性指向函数的原型对象时，在默认情况下，其原型对象将会获得一个 constructor 属性，这个属性是一个指针，指向 prototype 所在的函数对象。</p>
+<h4 id="constructor-属性"><a href="#constructor-属性" class="headerlink" title="constructor 属性"></a>constructor 属性</h4><p>当函数创建，prototype 属性指向一个原型对象时，在默认情况下，这个原型对象将会获得一个 constructor 属性，这个属性是一个指针，指向 prototype 所在的函数对象。</p>
 <p>拿前面的一个例子来说 Person.prototype.constructor 就指向 Person 函数对象。</p>
 <p>下面我们来更新一下它们之间的关系图。</p>
 <p><img src="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-3.png" alt="配图18-3"></p>
-<h4 id="proto"><a href="#proto" class="headerlink" title="__proto__"></a>__proto__</h4><p>当我们调用构造函数创建一个新实例后，在这个实例的内部将包含一个指针，指向构造函数的原型对象，在 ECMA-262 第五版中管这个指针叫做[[Prototype]]。</p>
-<p>需要注意的是在脚本中没有标准的方式访问[[Prototype]]，但是在 Firefox，Safari 和 Chrome 中每个对象中都支持一个属性 __proto__ 来访问，为了区分 prototype 属性，我们在下边都使用 __proto__来表示。</p>
+<h4 id="对象的-proto-属性"><a href="#对象的-proto-属性" class="headerlink" title="对象的 __proto__ 属性"></a>对象的 __proto__ 属性</h4><p>当我们调用构造函数创建一个新实例后，在这个实例的内部将包含一个指针，指向构造函数的原型对象，在 ECMA-262 第五版中管这个指针叫做 [[Prototype]] 。所有的对象都含有 [[Prototype]] 属性，指向它们的原型对象，这是理解原型链的一个关键概念。</p>
+<p>需要注意的是在脚本中没有标准的方式访问 [[Prototype]] 属性，但是在 Firefox，Safari 和 Chrome 中每个对象中都支持一个属性 __proto__ 来访问，为了区分 prototype 属性，我们在下边都使用 __proto__来表示。</p>
 <p>根据前面的 Person 构造函数我们新建一个实例</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> student = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(student.__proto__ === Person.prototype); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <p>从上面我们可以看出，这个连接是存在与实例与构造函数的原型对象之间的，而不是存在于实例和构造函数之间的。</p>
@@ -530,6 +532,13 @@
 <p>那么我更新一下我们上面的原型链</p>
 <p><img src="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-8.png" alt="配图18-8"></p>
 <p>Object.prototype 就是原型链的终点了，我们可以试着打印一下 Object.prototype.__proto__，我们会发现返回的是一个 null 空对象，这就意味着原型链的结束。</p>
+<h4 id="函数也是对象"><a href="#函数也是对象" class="headerlink" title="函数也是对象"></a>函数也是对象</h4><p>其实上面的原型链还少了一部分，为什么呢。因为我们知道在 JavaScript 中，函数也是对象，那么函数也应该有它的原型对象。下面我们通过一个实例来了解它们之间的关系。</p>
+<p>实例代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">who</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.me = who;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.prototype.identify = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="string">"I am "</span> + <span class="keyword">this</span>.me;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bar</span>(<span class="params">who</span>) </span>&#123;</span><br><span class="line">Foo.call( <span class="keyword">this</span>, who );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Bar.prototype = <span class="built_in">Object</span>.create( Foo.prototype );</span><br><span class="line"></span><br><span class="line">Bar.prototype.speak = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">alert( <span class="string">"Hello, "</span> + <span class="keyword">this</span>.identify() + <span class="string">"."</span> );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> b1 = <span class="keyword">new</span> Bar( <span class="string">"b1"</span> );</span><br><span class="line"><span class="keyword">var</span> b2 = <span class="keyword">new</span> Bar( <span class="string">"b2"</span> );</span><br><span class="line"></span><br><span class="line">b1.speak();</span><br><span class="line">b2.speak();</span><br></pre></td></tr></table></figure>
+<p>我们先看一下不包含函数原型的以上实例所包含的原型链的关系图</p>
+<p><img src="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-9.png" alt="配图18-9"></p>
+<p>下面是加入了函数原型后的原型链的关系图。</p>
+<p><img src="https://cavszhouyou-1254093697.cos.ap-chongqing.myqcloud.com/peitu18-10.png" alt="配图18-10"></p>
 <h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>总结了原型和原型链的知识后，感觉对 JavaScript 语言的理解更加深刻了，也为后面理解对象的创建和继承打下了基础。其实理解原型链，对于 JavaScript 中一些预定义类型的行为和实现就很好理解了。</p>
 <p><strong>本篇文章纯属于个人的学习总结，如果文章中出现错误或不严谨的地方，希望大家能够指出，谢谢！</strong></p>
 
@@ -582,9 +591,9 @@
           
             <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
-            <a href="/tags/原型/" rel="tag"><i class="fa fa-tag"></i> 原型</a>
-          
             <a href="/tags/原型链/" rel="tag"><i class="fa fa-tag"></i> 原型链</a>
+          
+            <a href="/tags/原型/" rel="tag"><i class="fa fa-tag"></i> 原型</a>
           
         </div>
       
@@ -785,7 +794,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">2.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型对象理解"><span class="nav-number">2.1.</span> <span class="nav-text">原型对象理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prototype-属性"><span class="nav-number">2.1.1.</span> <span class="nav-text">prototype 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#constructor-属性"><span class="nav-number">2.1.2.</span> <span class="nav-text">constructor 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#proto"><span class="nav-number">2.1.3.</span> <span class="nav-text">__proto__</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isPrototypeOf-NaN"><span class="nav-number">2.1.4.</span> <span class="nav-text">isPrototypeOf()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-getPrototypeOf"><span class="nav-number">2.1.5.</span> <span class="nav-text">Object.getPrototypeOf()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型属性"><span class="nav-number">2.2.</span> <span class="nav-text">原型属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性访问"><span class="nav-number">2.2.1.</span> <span class="nav-text">属性访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性判断"><span class="nav-number">2.2.2.</span> <span class="nav-text">属性判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-in-循环"><span class="nav-number">2.2.3.</span> <span class="nav-text">for-in 循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所有属性获取"><span class="nav-number">2.2.4.</span> <span class="nav-text">所有属性获取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链"><span class="nav-number">3.</span> <span class="nav-text">原型链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链理解"><span class="nav-number">3.1.</span> <span class="nav-text">原型链理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认的原型"><span class="nav-number">3.2.</span> <span class="nav-text">默认的原型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">2.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型对象理解"><span class="nav-number">2.1.</span> <span class="nav-text">原型对象理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数对象的-prototype-属性"><span class="nav-number">2.1.1.</span> <span class="nav-text">函数对象的 prototype 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#constructor-属性"><span class="nav-number">2.1.2.</span> <span class="nav-text">constructor 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对象的-proto-属性"><span class="nav-number">2.1.3.</span> <span class="nav-text">对象的 __proto__ 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isPrototypeOf-NaN"><span class="nav-number">2.1.4.</span> <span class="nav-text">isPrototypeOf()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-getPrototypeOf"><span class="nav-number">2.1.5.</span> <span class="nav-text">Object.getPrototypeOf()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型属性"><span class="nav-number">2.2.</span> <span class="nav-text">原型属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性访问"><span class="nav-number">2.2.1.</span> <span class="nav-text">属性访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性判断"><span class="nav-number">2.2.2.</span> <span class="nav-text">属性判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for-in-循环"><span class="nav-number">2.2.3.</span> <span class="nav-text">for-in 循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所有属性获取"><span class="nav-number">2.2.4.</span> <span class="nav-text">所有属性获取</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链"><span class="nav-number">3.</span> <span class="nav-text">原型链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链理解"><span class="nav-number">3.1.</span> <span class="nav-text">原型链理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认的原型"><span class="nav-number">3.2.</span> <span class="nav-text">默认的原型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数也是对象"><span class="nav-number">3.2.1.</span> <span class="nav-text">函数也是对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
@@ -805,7 +814,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -819,7 +828,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">58.7k</span>
+    <span title="Site words total count">58.9k</span>
   
 </div>
 
